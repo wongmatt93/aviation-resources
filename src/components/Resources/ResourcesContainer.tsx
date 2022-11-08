@@ -1,14 +1,25 @@
 import ResourceCard from "./ResourceCard";
+import { useQuery, gql } from "@apollo/client";
 import "./ResourcesContainer.css";
+import { useEffect, useState } from "react";
+import { GET_RESOURCES } from "../../GraphQL/Queries";
 
 const ResourcesContainer = () => {
-  const array = [1, 2, 3, 4, 5];
+  const [resources, setResources] = useState([]);
+
+  const { error, loading, data } = useQuery(GET_RESOURCES);
+
+  useEffect(() => {
+    data && setResources(data.resources);
+  }, [data]);
+
+  console.log(resources);
 
   return (
     <div className="ResourcesContainer">
       <ul>
-        {array.map((item) => (
-          <ResourceCard />
+        {resources.map((resource) => (
+          <ResourceCard resource={resource} />
         ))}
       </ul>
     </div>

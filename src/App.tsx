@@ -10,24 +10,28 @@ import ResourcesPage from "./components/Resources/ResourcesPage";
 import SignupPage from "./components/SignupPage";
 import TestsPage from "./components/Tests/TestsPage";
 import UserProfilePage from "./components/UserProfilePage";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./ApolloClient/client";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-          <Route path="/lessons" element={<LessonsPage />} />
-          <Route path="/tests" element={<TestsPage />} />
-          <Route path="/community" element={<CommunityPage />} />
-          <Route path="/log-in" element={<LoginPage />} />
-          <Route path="/sign-up" element={<SignupPage />} />
-          <Route path="/user-profile" element={<UserProfilePage />} />
-        </Routes>
-      </Router>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/lessons" element={<LessonsPage />} />
+            <Route path="/tests" element={<TestsPage />} />
+            <Route path="/community" element={<CommunityPage />} />
+            <Route path="/log-in" element={<LoginPage />} />
+            <Route path="/sign-up" element={<SignupPage />} />
+            <Route path="/user-profile" element={<UserProfilePage />} />
+          </Routes>
+        </Router>
+      </div>
+    </ApolloProvider>
   );
 }
 
