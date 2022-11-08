@@ -7,16 +7,16 @@ const Header = () => {
       <h1>Aviation Resources</h1>
       <nav>
         <ul>
-          <li>
+          <li className="nav-button">
             <Link to="/resources">Resources</Link>
           </li>
-          <li>
+          <li className="nav-button">
             <Link to="/lessons">Lessons</Link>
           </li>
-          <li>
+          <li className="nav-button">
             <Link to="/tests">Tests</Link>
           </li>
-          <li>
+          <li className="nav-button">
             <Link to="/community">Community</Link>
           </li>
         </ul>
