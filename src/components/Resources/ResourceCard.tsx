@@ -1,7 +1,16 @@
+import Resource from "../../Models/ResourceModels/Resource";
 import "./ResourceCard.css";
 
-const ResourceCard = () => {
-  return <div className="ResourceCard">ResourceCard works</div>;
+interface Props {
+  resource: Resource;
+}
+
+const ResourceCard = ({ resource }: Props) => {
+  return (
+    <li className="ResourceCard">
+      <h2>{resource.documentName}</h2>
+    </li>
+  );
 };
 
 export default ResourceCard;
