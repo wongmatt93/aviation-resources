@@ -4,7 +4,11 @@ import "./ResourcesContainer.css";
 import { useEffect, useState } from "react";
 import { GET_RESOURCES } from "../../GraphQL/Queries";
 
-const ResourcesContainer = () => {
+interface Props {
+  search: string;
+}
+
+const ResourcesContainer = ({ search }: Props) => {
   const [resources, setResources] = useState([]);
 
   const { error, loading, data } = useQuery(GET_RESOURCES);
@@ -12,8 +16,6 @@ const ResourcesContainer = () => {
   useEffect(() => {
     data && setResources(data.resources);
   }, [data]);
-
-  console.log(resources);
 
   return (
     <div className="ResourcesContainer">

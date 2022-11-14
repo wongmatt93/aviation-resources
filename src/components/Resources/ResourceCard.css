@@ -1,0 +1,18 @@
+.ResourceCard h2 {
+  display: flex;
+  background-color: #c0ccda;
+  font-size: small;
+  font-weight: 300;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ResourceCard {
+  border: 1px solid #c0ccda;
+  padding-top: 0.5em;
+}
+
+img {
+  height: 100px;
+}

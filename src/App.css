@@ -1,5 +1,9 @@
 /* resets */
 
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
 body,
 h1,
 h2,

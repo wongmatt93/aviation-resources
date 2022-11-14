@@ -1,0 +1,8 @@
+.ResourcesContainer ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  row-gap: 3em;
+  column-gap: 4em;
+  list-style-type: none;
+  padding: 3em;
+}

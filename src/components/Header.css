@@ -1,7 +1,13 @@
 .Header {
   display: flex;
+  padding: 1em;
+  justify-content: space-around;
 }
 
+.Header h1 {
+  color: #343e49;
+  padding: 0.5em;
+}
 .Header nav ul {
   display: flex;
 }
@@ -14,14 +20,24 @@
   padding: 5px 20px;
   border-radius: 5px;
   margin: 5px;
-  background-color: rgb(192, 204, 218);
+  background-color: #c0ccda;
 }
 
-.Header .nav-button .active {
-  background-color: rgb(99, 160, 209);
+.Header .nav-button:active {
+  background-color: #63a0db;
+}
+
+.Header .active {
+  background-color: #63a0db;
 }
 
 .Header .nav-button a {
   color: white;
   text-decoration: none;
+}
+
+img {
+  border-radius: 50%;
+  width: auto;
+  height: 100px;
 }
