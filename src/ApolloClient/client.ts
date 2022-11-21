@@ -8,13 +8,16 @@ import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { RestLink } from "apollo-link-rest";
 
+const uri: string = process.env.REACT_APP_API_URI || "";
+const key: string = process.env.REACT_APP_API_KEY || "";
+
 const httpLink = new HttpLink({
-  uri: "https://graphql.aviationresources.io/v1/graphql",
+  uri,
 });
 
 const headerLink: ApolloLink = setContext((request) => ({
   headers: {
-    "X-Hasura-Access-Key": "bmcda7kbqtih8c8se",
+    "X-Hasura-Access-Key": key,
   },
 }));
 
