@@ -20,18 +20,26 @@ const Header = () => {
       <h1>Aviation Resources</h1>
       <nav>
         <ul>
-          <li className="nav-button" id="resources">
-            <Link to="/resources">Resources</Link>
-          </li>
-          <li className="nav-button" id="lessons">
-            <Link to="/lessons">Lessons</Link>
-          </li>
-          <li className="nav-button" id="tests">
-            <Link to="/tests">Tests</Link>
-          </li>
-          <li className="nav-button" id="community">
-            <Link to="/community">Community</Link>
-          </li>
+          <Link to="/resources">
+            <li className="nav-button" id="resources">
+              Resources
+            </li>
+          </Link>
+          <Link to="/lessons">
+            <li className="nav-button" id="lessons">
+              Lessons
+            </li>
+          </Link>
+          <Link to="/tests">
+            <li className="nav-button" id="tests">
+              Tests
+            </li>
+          </Link>
+          <Link to="/community">
+            <li className="nav-button" id="community">
+              Community
+            </li>
+          </Link>
         </ul>
       </nav>
     </header>
