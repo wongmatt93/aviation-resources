@@ -1,0 +1,48 @@
+.CommunityConversationCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 2%;
+  width: 80%;
+  height: 200px;
+  margin: 1%;
+}
+
+.CommunityConversationCard .post-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding-bottom: 1%;
+}
+
+.CommunityConversationCard .date-info {
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CommunityConversationCard .app-user {
+  flex: 2;
+  text-align: right;
+}
+
+.CommunityConversationCard .conversation-text {
+  line-height: 1.5;
+  padding: 2%;
+}
+
+.CommunityConversationCard .reply-info {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid gray;
+  padding-top: 1%;
+}
+
+@media only screen and (min-width: 768px) {
+  .CommunityConversationCard {
+    width: 20%;
+    height: 300px;
+  }
+}

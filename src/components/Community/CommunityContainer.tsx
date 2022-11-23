@@ -1,16 +1,27 @@
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
+import { GET_COMMUNITY_POSTS } from "../../GraphQL/Queries";
+import CommunityConversation from "../../Models/CommunityModels/CommunityConversation";
 import "./CommunityContainer.css";
-import CommunityPostCard from "./CommunityPostCard";
+import CommunityConversationCard from "./CommunityConversationCard";
 
 const CommunityContainer = () => {
-  const array = [1, 2, 3, 4, 5, 6];
+  const [communityConversations, setCommunityConversations] = useState<
+    CommunityConversation[]
+  >([]);
+
+  const { error, loading, data } = useQuery(GET_COMMUNITY_POSTS);
+
+  useEffect(() => {
+    data && setCommunityConversations(data.community_conversation);
+  }, [data]);
+
   return (
-    <div className="CommunityContainer">
-      <ul>
-        {array.map((item) => (
-          <CommunityPostCard item={item} />
-        ))}
-      </ul>
-    </div>
+    <ul className="CommunityContainer">
+      {communityConversations.map((conversation) => (
+        <CommunityConversationCard conversation={conversation} />
+      ))}
+    </ul>
   );
 };
 

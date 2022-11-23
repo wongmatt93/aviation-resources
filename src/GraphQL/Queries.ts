@@ -12,6 +12,50 @@ export const GET_RESOURCES = gql`
   }
 `;
 
+export const GET_COMMUNITY_POSTS = gql`
+  {
+    community_conversation {
+      created_at
+      id
+      publishing_user_id
+      updated_at
+      conversation_text
+      community_conversation_replies {
+        community_conversation_id
+        community_conversation_reply_text
+        created_at
+        id
+        publishing_user_id
+        updated_at
+      }
+      app_user {
+        email
+        id
+        name
+        updated_at
+        created_at
+        highest_acs
+        purpose
+        community_conversation_replies {
+          community_conversation_id
+          community_conversation_reply_text
+          id
+          created_at
+          publishing_user_id
+          updated_at
+        }
+        community_conversations {
+          conversation_text
+          created_at
+          id
+          publishing_user_id
+          updated_at
+        }
+      }
+    }
+  }
+`;
+
 export const GET_ACS = gql`
   {
     airman_certification_standards {
