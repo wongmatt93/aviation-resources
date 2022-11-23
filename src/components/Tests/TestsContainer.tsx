@@ -1,17 +1,17 @@
+import { useQuery } from "@apollo/client";
+import { useEffect } from "react";
+import { GET_TESTS } from "../../GraphQL/Queries";
 import TestCard from "./TestCard";
 import "./TestsContainer.css";
 
 const TestsContainer = () => {
-  const array = [1, 2, 3, 4];
-  return (
-    <div className="TestsContainer">
-      <ul>
-        {array.map((item) => (
-          <TestCard />
-        ))}
-      </ul>
-    </div>
-  );
+  const { error, loading, data } = useQuery(GET_TESTS);
+
+  useEffect(() => {
+    data && console.log(data.test);
+  }, [data]);
+
+  return <ul className="TestsContainer"></ul>;
 };
 
 export default TestsContainer;

@@ -3,10 +3,11 @@
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid black;
-  padding: 2%;
+  padding: 1%;
   width: 80%;
   height: 200px;
   margin: 1%;
+  box-sizing: border-box;
 }
 
 .CommunityConversationCard .post-info {
@@ -18,13 +19,13 @@
 }
 
 .CommunityConversationCard .date-info {
-  flex: 3;
+  flex: 9;
   display: flex;
   justify-content: space-between;
 }
 
 .CommunityConversationCard .app-user {
-  flex: 2;
+  flex: 10;
   text-align: right;
 }
 
@@ -42,7 +43,7 @@
 
 @media only screen and (min-width: 768px) {
   .CommunityConversationCard {
-    width: 20%;
+    width: 30%;
     height: 300px;
   }
 }

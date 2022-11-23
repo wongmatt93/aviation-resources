@@ -19,7 +19,10 @@ const CommunityContainer = () => {
   return (
     <ul className="CommunityContainer">
       {communityConversations.map((conversation) => (
-        <CommunityConversationCard conversation={conversation} />
+        <CommunityConversationCard
+          key={conversation.id}
+          conversation={conversation}
+        />
       ))}
     </ul>
   );

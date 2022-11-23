@@ -1,6 +1,6 @@
 import "./NewCommunityPostForm.css";
 import Modal from "react-modal";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 Modal.setAppElement("#root");
 
@@ -10,22 +10,31 @@ const NewCommunityPostForm = () => {
   const openModal = (): void => setIsOpen(true);
   const closeModal = (): void => setIsOpen(false);
 
+  const handleSubmit = (e: FormEvent): void => {
+    e.preventDefault();
+  };
+
   return (
     <div className="NewCommunityPostForm">
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>New Post</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
+        className="new-post-modal"
+        overlayClassName="new-post-modal-overlay"
       >
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
+        <div className="new-post-header">
+          <h2>New Post</h2>
+          <button onClick={closeModal}>close</button>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            name="post"
+            id="post"
+            placeholder="Write New Post..."
+          ></textarea>
+          <button>Post</button>
         </form>
       </Modal>
     </div>
