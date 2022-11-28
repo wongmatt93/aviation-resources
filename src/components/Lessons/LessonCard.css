@@ -1,0 +1,27 @@
+.LessonCard {
+  border: 1px solid gray;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.LessonCard .name-styles {
+  font-weight: 100;
+  padding: 0.2rem;
+}
+
+.LessonCard h3 {
+  font-size: small;
+}
+
+.LessonCard ul {
+  display: flex;
+}
+
+.LessonCard .created-at-styles {
+  padding: 0.2rem;
+}
+
+.LessonCard .label-bottom-text {
+  font-size: small;
+}
