@@ -19,17 +19,15 @@ const ResourcesContainer = ({ search }: Props) => {
   }, [data]);
 
   return (
-    <div className="ResourcesContainer">
-      <ul>
-        {resources
-          .filter((resource) =>
-            resource.documentName.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((resource) => (
-            <ResourceCard resource={resource} />
-          ))}
-      </ul>
-    </div>
+    <ul className="ResourcesContainer">
+      {resources
+        .filter((resource) =>
+          resource.documentName.toLowerCase().includes(search.toLowerCase())
+        )
+        .map((resource) => (
+          <ResourceCard key={resource.id} resource={resource} />
+        ))}
+    </ul>
   );
 };
 

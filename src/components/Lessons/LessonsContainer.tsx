@@ -1,28 +1,17 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { GET_ACS } from "../../GraphQL/Queries";
-import ACSOutline from "../../Models/ACSModels/ACSOutline";
+import { GET_LESSONS } from "../../GraphQL/Queries";
 import LessonCard from "./LessonCard";
 import "./LessonsContainer.css";
 
 const LessonsContainer = () => {
-  const [acs, setACS] = useState<ACSOutline[]>([]);
-
-  const { error, loading, data } = useQuery(GET_ACS);
+  const { error, loading, data } = useQuery(GET_LESSONS);
 
   useEffect(() => {
-    data && setACS(data.airman_certification_standards);
+    data && console.log(data.lesson);
   }, [data]);
-  return (
-    <div className="LessonsContainer">
-      <ul>
-        {acs &&
-          acs.map((outline) => (
-            <LessonCard key={outline.id} outline={outline} />
-          ))}
-      </ul>
-    </div>
-  );
+
+  return <ul className="LessonsContainer"></ul>;
 };
 
 export default LessonsContainer;
