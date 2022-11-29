@@ -13,6 +13,8 @@ const LessonsContainer = () => {
     data && setLessons(data.lesson);
   }, [data]);
 
+  console.log(lessons);
+
   return (
     <ul className="LessonsContainer">
       {lessons.map((lesson) => (

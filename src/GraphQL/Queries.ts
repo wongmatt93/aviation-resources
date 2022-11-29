@@ -1,5 +1,19 @@
 import { gql } from "@apollo/client";
 
+export const GET_APP_USERS = gql`
+  {
+    app_user(where: { id: { _eq: "65edcf49-c7aa-4389-a842-66733ba2e867" } }) {
+      id
+      created_at
+      email
+      highest_acs
+      name
+      purpose
+      updated_at
+    }
+  }
+`;
+
 export const GET_RESOURCES = gql`
   query {
     resources {
@@ -14,7 +28,11 @@ export const GET_RESOURCES = gql`
 
 export const GET_LESSONS = gql`
   {
-    lesson(where: { name: { _eq: "Demo Lesson" } }) {
+    lesson(
+      where: {
+        created_by_user_id: { _eq: "65edcf49-c7aa-4389-a842-66733ba2e867" }
+      }
+    ) {
       created_at
       name
       id
