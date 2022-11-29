@@ -4,6 +4,22 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  background: linear-gradient(rgba(99, 160, 219, 0.5), rgba(99, 160, 219, 0.5)),
+    url("./assets/map-app-bkgd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  opacity: 0.8;
+  flex: 1;
+}
+
 body,
 h1,
 h2,

@@ -1,0 +1,7 @@
+.TestsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1rem;
+  margin: 1rem;
+}

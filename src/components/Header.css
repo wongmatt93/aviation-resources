@@ -2,11 +2,13 @@
   display: flex;
   padding: 1em;
   justify-content: space-around;
+  align-items: center;
 }
 
 .Header h1 {
-  color: #343e49;
+  color: rgba(20, 92, 163, 0.8);
   padding: 0.5em;
+  font-weight: lighter;
 }
 .Header nav ul {
   display: flex;
@@ -39,5 +41,5 @@
 .Header img {
   border-radius: 50%;
   width: auto;
-  height: 100px;
+  height: 70px;
 }

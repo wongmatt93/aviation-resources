@@ -58,25 +58,41 @@ export const GET_LESSONS = gql`
 export const GET_TESTS = gql`
   {
     test(
-      where: { app_user_id: { _eq: "a105afae-a4bb-4b3e-8547-eb967e24291e" } }
+      where: { app_user_id: { _eq: "65edcf49-c7aa-4389-a842-66733ba2e867" } }
     ) {
       id
+      created_at
+      app_user_id
+      airman_certification_standards_id
+      airman_certification_standard {
+        id
+        name
+        created_at
+        ready
+        updated_at
+        icon_value
+        abbreviation
+      }
       test_questions {
         id
+        user_answered_correctly
+        question_id
         question {
-          id
           airman_categories
+          airman_certification_standard_id
+          deprecated
           display_text
+          elements
+          explanation
+          id
+          reference
           answers {
             id
+            display_letter
             display_text
+            explanation
             is_correct
           }
-          airman_certification_standard {
-            abbreviation
-            name
-          }
-          reference
         }
       }
     }
