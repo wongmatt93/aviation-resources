@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 const Header = () => {
   const location = useLocation();
+
   useEffect(() => {
     const navLinks = document.querySelectorAll(".nav-button");
     navLinks.forEach((link) =>
@@ -14,6 +15,7 @@ const Header = () => {
         : link.classList.remove("active")
     );
   });
+
   return (
     <header className="Header">
       <Image src={Logo} alt="logo" />

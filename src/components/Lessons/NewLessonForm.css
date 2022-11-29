@@ -1,4 +1,4 @@
-.new-post-modal-overlay {
+.new-lesson-modal-overlay {
   z-index: 1;
   position: fixed;
   top: 0;
@@ -8,7 +8,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.new-post-modal {
+.new-lesson-modal {
   background-color: white;
   position: absolute;
   top: 50%;
@@ -21,7 +21,7 @@
   box-sizing: border-box;
   overflow: auto;
 }
-
+/* 
 .new-post-modal .new-post-header {
   display: flex;
   justify-content: space-between;
@@ -48,4 +48,4 @@
   .new-post-modal {
     width: 40%;
   }
-}
+} */
