@@ -1,11 +1,12 @@
 import { createContext } from "react";
+import AppUser from "../Models/AppUser";
 
 export interface AuthContextModel {
-  id: string | null;
+  user: AppUser | null;
 }
 
 const defaultValue: AuthContextModel = {
-  id: null,
+  user: null,
 };
 
 const AuthContext = createContext(defaultValue);

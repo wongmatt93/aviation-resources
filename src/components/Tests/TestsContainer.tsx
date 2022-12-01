@@ -1,12 +1,19 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GET_TESTS } from "../../GraphQL/Queries";
+import AppUser from "../../Models/AppUser";
 import Test from "../../Models/TestsModels/Test";
 import TestCard from "./TestCard";
 import "./TestsContainer.css";
 
-const TestsContainer = () => {
-  const { error, loading, data } = useQuery(GET_TESTS);
+interface Props {
+  user: AppUser | null;
+}
+
+const TestsContainer = ({ user }: Props) => {
+  const { error, loading, data } = useQuery(GET_TESTS, {
+    variables: { id: user && user.id },
+  });
   const [tests, setTests] = useState<Test[]>([]);
 
   useEffect(() => {
