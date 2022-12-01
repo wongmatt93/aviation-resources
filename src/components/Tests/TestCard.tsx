@@ -26,12 +26,14 @@ const TestCard = ({ test }: Props) => {
     );
     setPercentCompleted((numCompleted / test.test_questions.length) * 100);
     setPercentCorrect(
-      (test.test_questions.reduce(
-        (pv, cv) => (cv.user_answered_correctly ? (pv += 1) : pv),
-        0
-      ) /
-        numCompleted) *
-        100
+      numCompleted
+        ? (test.test_questions.reduce(
+            (pv, cv) => (cv.user_answered_correctly ? (pv += 1) : pv),
+            0
+          ) /
+            numCompleted) *
+            100
+        : 0
     );
   }, [test]);
 
