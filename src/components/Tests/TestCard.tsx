@@ -20,21 +20,17 @@ const TestCard = ({ test }: Props) => {
   });
 
   useEffect(() => {
-    setPercentCompleted(
-      (test.test_questions.reduce(
-        (pv, cv) => (cv.answer_id ? (pv += 1) : pv),
-        0
-      ) /
-        test.test_questions.length) *
-        100
+    const numCompleted: number = test.test_questions.reduce(
+      (pv, cv) => (cv.answer_id ? (pv += 1) : pv),
+      0
     );
-
+    setPercentCompleted((numCompleted / test.test_questions.length) * 100);
     setPercentCorrect(
       (test.test_questions.reduce(
         (pv, cv) => (cv.user_answered_correctly ? (pv += 1) : pv),
         0
       ) /
-        test.test_questions.length) *
+        numCompleted) *
         100
     );
   }, [test]);
@@ -46,8 +42,8 @@ const TestCard = ({ test }: Props) => {
   return (
     <li className="TestCard">
       <h3>{test.airman_certification_standard.abbreviation}</h3>
-      <p>Percent Completed: {percentCompleted}%</p>
-      <p>Percent Correct: {percentCorrect}%</p>
+      <p>Percent Completed: {Math.trunc(percentCompleted)}%</p>
+      <p>Percent Correct: {Math.trunc(percentCorrect)}%</p>
       <TestQuestionsList test={test} />
       <button onClick={handleClick}>delete</button>
     </li>

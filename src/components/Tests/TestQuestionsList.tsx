@@ -27,9 +27,18 @@ const TestQuestionsList = ({ test }: Props) => {
         <button onClick={closeModal}>close</button>
         <h3>Test</h3>
         <ul>
-          {test.test_questions.map((question) => (
-            <TestQuestionCard key={question.id} question={question} />
-          ))}
+          {test.test_questions
+            .slice()
+            .sort((a, b) =>
+              (
+                a.question.reference + a.question.airman_categories
+              ).localeCompare(
+                b.question.reference + b.question.airman_categories
+              )
+            )
+            .map((question) => (
+              <TestQuestionCard key={question.id} question={question} />
+            ))}
         </ul>
       </Modal>
     </div>
