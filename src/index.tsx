@@ -4,15 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./Context/AuthContextProvider";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./ApolloClient/client";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+    <ApolloProvider client={client}>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </ApolloProvider>
   </React.StrictMode>
 );
 

@@ -1,11 +1,16 @@
 import { gql } from "@apollo/client";
 
 export const INSERT_LESSON = gql`
-  mutation {
+  mutation NewLessonForm(
+    $id: uuid!
+    $name: String!
+    $data: [lesson_task_insert_input!]!
+  ) {
     insert_lesson(
       objects: {
-        created_by_user_id: "65edcf49-c7aa-4389-a842-66733ba2e867"
-        name: "Your Mom"
+        created_by_user_id: $id
+        name: $name
+        lesson_tasks: { data: $data }
       }
     ) {
       returning {
@@ -17,10 +22,32 @@ export const INSERT_LESSON = gql`
 `;
 
 export const DELETE_LESSON = gql`
-  mutation {
-    delete_lesson(where: { name: { _eq: "Your Mom" } }) {
+  mutation LessonCard($id: uuid!) {
+    delete_lesson(where: { id: { _eq: $id } }) {
       returning {
         name
+      }
+    }
+  }
+`;
+
+export const INSERT_TEST = gql`
+  mutation NewTestForm($id: uuid!, $acs_id: uuid!) {
+    insert_test(
+      objects: { airman_certification_standards_id: $acs_id, app_user_id: $id }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
+export const DELETE_TEST = gql`
+  mutation TestCard($id: uuid!) {
+    delete_test(where: { id: { _eq: $id } }) {
+      returning {
+        id
       }
     }
   }
