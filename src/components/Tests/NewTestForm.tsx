@@ -5,7 +5,6 @@ import { useQuery } from "@apollo/client";
 import { GET_ACS, GET_QUESTIONS } from "../../GraphQL/Queries";
 import ACSOutline from "../../Models/ACSModels/ACSOutline";
 import AppUser from "../../Models/AppUser";
-import TestQuestions from "./TestQuestionsList";
 import Question from "../../Models/TestsModels/Question";
 
 Modal.setAppElement("#root");
@@ -24,8 +23,8 @@ const NewTestForm = ({ user, addTest }: Props) => {
   );
   const [acsArray, setAcsArray] = useState<ACSOutline[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
 
-  // const { error, loading, data } = useQuery(GET_ACS);
   const resACS = useQuery(GET_ACS);
   const resQuestions = useQuery(GET_QUESTIONS);
 
@@ -33,29 +32,73 @@ const NewTestForm = ({ user, addTest }: Props) => {
     setIsOpen(true);
     setAcs(acsArray[0].abbreviation);
   };
-  const closeModal = (): void => setIsOpen(false);
+
+  const closeModal = (): void => {
+    setIsOpen(false);
+  };
+
+  const shuffleQuestions = (questions: Question[]): Question[] => {
+    let currentIndex = questions.length,
+      randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [questions[currentIndex], questions[randomIndex]] = [
+        questions[randomIndex],
+        questions[currentIndex],
+      ];
+    }
+    return questions;
+  };
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
-    addTest({ variables: { id: user && user.id, acs_id: acsOutline!.id } });
+    const selected: { question_id: string }[] = [];
+    shuffleQuestions(filteredQuestions.slice())
+      .slice(0, numQuestions)
+      .forEach((item) => selected.push({ question_id: item.id }));
+    addTest({
+      variables: {
+        id: user && user.id,
+        acs_id: acsOutline!.id,
+        data: selected,
+      },
+    });
     closeModal();
   };
 
   useEffect(() => {
-    resACS.data && setAcsArray(resACS.data.airman_certification_standards);
-  }, [resACS.data]);
+    if (resQuestions.data) {
+      setQuestions(resQuestions.data.question);
+      if (resACS.data) {
+        const array: ACSOutline[] = resACS.data.airman_certification_standards;
+        setAcsArray(resACS.data.airman_certification_standards);
+        setAcs(array[0].abbreviation);
+      }
+    }
+  }, [resQuestions.data, resACS.data]);
 
   useEffect(() => {
-    resQuestions.data && setQuestions(resQuestions.data.question);
-  }, [resQuestions.data]);
-
-  useEffect(() => {
-    acs && setAcsOutline(acsArray.find((item) => item.abbreviation === acs));
+    if (acs) {
+      const outline: ACSOutline | undefined = acsArray.find(
+        (outline) => outline.abbreviation === acs
+      );
+      setAcsOutline(outline);
+      if (outline) {
+        const filtered: Question[] = questions.filter(
+          (question) => question.airman_certification_standard_id === outline.id
+        );
+        setFilteredQuestions(filtered);
+        if (numQuestions > filtered.length) {
+          setNumQuestions(filtered.length);
+        }
+      }
+    }
   }, [acs]);
 
   return (
     <div className="NewTestForm">
-      <button onClick={openModal}>+</button>
+      {resQuestions.data && <button onClick={openModal}>+</button>}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -76,14 +119,7 @@ const NewTestForm = ({ user, addTest }: Props) => {
               </option>
             ))}
           </select>
-          <p>
-            Available Questions:{" "}
-            {acsOutline &&
-              questions.filter(
-                (question) =>
-                  question.airman_certification_standard_id === acsOutline.id
-              ).length}
-          </p>
+          <p>Available Questions: {filteredQuestions.length}</p>
           <label htmlFor="num-quesitons">
             Selected Questions: {numQuestions}{" "}
           </label>
@@ -92,13 +128,7 @@ const NewTestForm = ({ user, addTest }: Props) => {
             name="num-questions"
             id="num-questions"
             min="1"
-            max={
-              acsOutline &&
-              questions.filter(
-                (question) =>
-                  question.airman_certification_standard_id === acsOutline.id
-              ).length
-            }
+            max={filteredQuestions.length}
             value={numQuestions}
             onChange={(e) => setNumQuestions(parseInt(e.target.value))}
           />

@@ -32,10 +32,31 @@ export const DELETE_LESSON = gql`
 `;
 
 export const INSERT_TEST = gql`
-  mutation NewTestForm($id: uuid!, $acs_id: uuid!) {
+  mutation NewTestForm(
+    $id: uuid!
+    $acs_id: uuid!
+    $data: [test_question_insert_input!]!
+  ) {
     insert_test(
-      objects: { airman_certification_standards_id: $acs_id, app_user_id: $id }
+      objects: {
+        app_user_id: $id
+        airman_certification_standards_id: $acs_id
+        test_questions: { data: $data }
+      }
     ) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
+export const UPDATE_TEST_QUESTION = gql`
+  mutation NewTestForm(
+    $_set: test_question_set_input!
+    $where: test_question_bool_exp!
+  ) {
+    update_test_question(_set: $_set, where: $where) {
       returning {
         id
       }

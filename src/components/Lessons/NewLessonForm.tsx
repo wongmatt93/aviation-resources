@@ -17,9 +17,7 @@ interface Props {
 
 const NewLessonForm = ({ user, addLesson }: Props) => {
   const [name, setName] = useState("");
-  const [taskIds, setTaskIds] = useState<NewTask[]>([
-    { task_id: "0ab18b15-855e-4e0b-9e5c-455c794b6eda" },
-  ]);
+  const [taskIds, setTaskIds] = useState<NewTask[]>([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [acs, setAcs] = useState<ACSOutline[]>([]);
   const { error, loading, data } = useQuery(GET_ACS);
