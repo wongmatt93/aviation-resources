@@ -1,4 +1,4 @@
-import Resource from "../../Models/ResourceModels/Resource";
+import Resource from "../../Models/Resource";
 import "./ResourceCard.css";
 import { Image } from "semantic-ui-react";
 

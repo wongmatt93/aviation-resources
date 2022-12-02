@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CommunityConversationReplies from "../../Models/CommunityModels/CommunityConversationReplies";
+import { CommunityConversationReplies } from "../../Models/CommunityConversation";
 import "./ConversationRepliesCard.css";
 
 interface Props {

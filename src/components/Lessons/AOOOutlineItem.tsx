@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import AOOOutline from "../../Models/ACSModels/AOOOutline";
-import NewTask from "../../Models/LessonsModels/NewTask";
+import AreaOfOperation from "../../Models/AreaOfOperation";
+import NewTask from "../../Models/NewTask";
 import "./AOOOutlineItem.css";
 import TaskItem from "./TaskItem";
 
 interface Props {
-  aooOutline: AOOOutline;
+  aooOutline: AreaOfOperation;
   taskIds: NewTask[];
   setTaskIds: React.Dispatch<React.SetStateAction<NewTask[]>>;
 }

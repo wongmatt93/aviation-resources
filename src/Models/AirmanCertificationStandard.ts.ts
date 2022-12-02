@@ -1,9 +1,8 @@
-import { ResourcesAcs } from "../LessonsModels/Lesson";
-import Question from "../TestsModels/Question";
-import Test from "../TestsModels/Test";
-import AOOOutline from "./AOOOutline";
+import { ResourcesAcs } from "./Lesson";
+import AOOOutline from "./AreaOfOperation";
+import { Question, Test } from "./Test";
 
-export default interface ACSOutline {
+export default interface AirmanCertificationStandard {
   id: string;
   name: string;
   abbreviation: string;

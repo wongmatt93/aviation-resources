@@ -1,10 +1,7 @@
-import {
-  AirmanCertificationStandard,
-  ResourcesAoas,
-} from "../LessonsModels/Lesson";
-import Task from "./Task";
+import AirmanCertificationStandard from "./AirmanCertificationStandard.ts";
+import { ResourcesAoas, Task } from "./Lesson";
 
-export default interface AOOOutline {
+export default interface AreaOfOperation {
   airman_certification_standard: AirmanCertificationStandard;
   airman_certification_standards_id: string;
   created_at: string;

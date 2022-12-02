@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GET_TESTS } from "../../GraphQL/Queries";
 import AppUser from "../../Models/AppUser";
-import Test from "../../Models/TestsModels/Test";
+import { Test } from "../../Models/Test";
 import TestCard from "./TestCard";
 import "./TestsContainer.css";
 
@@ -19,6 +19,9 @@ const TestsContainer = ({ user }: Props) => {
   useEffect(() => {
     data && setTests(data.test);
   }, [data]);
+
+  if (loading) return <p>"Loading..."</p>;
+  if (error) return <p>`Error! ${error.message}`</p>;
 
   return (
     <ul className="TestsContainer">

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { DELETE_LESSON } from "../../GraphQL/Mutations";
 import { GET_LESSONS } from "../../GraphQL/Queries";
-import { Lesson } from "../../Models/LessonsModels/Lesson";
+import { Lesson } from "../../Models/Lesson";
 import "./LessonCard.css";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const LessonCard = ({ lesson }: Props) => {
   const { user } = useContext(AuthContext);
   const [createdDate, setCreatedDate] = useState("");
-  const [deleteLesson, { data, loading, error }] = useMutation(DELETE_LESSON, {
+  const [deleteLesson] = useMutation(DELETE_LESSON, {
     refetchQueries: [
       { query: GET_LESSONS, variables: { id: user && user.id } },
     ],
