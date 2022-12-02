@@ -1,7 +1,9 @@
-import CommunityConversation from "./CommunityModels/CommunityConversation";
-import CommunityConversationReplies from "./CommunityModels/CommunityConversationReplies";
-import { Lesson } from "./LessonsModels/Lesson";
-import Test from "./TestsModels/Test";
+import {
+  CommunityConversation,
+  CommunityConversationReplies,
+} from "./CommunityConversation";
+import { Lesson } from "./Lesson";
+import { Test } from "./Test";
 
 export default interface AppUser {
   created_at: string;

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { DELETE_TEST } from "../../GraphQL/Mutations";
 import { GET_TESTS } from "../../GraphQL/Queries";
-import Test from "../../Models/TestsModels/Test";
+import { Test } from "../../Models/Test";
 import "./TestCard.css";
 import TestQuestionsList from "./TestQuestionsList";
 
@@ -15,7 +15,7 @@ const TestCard = ({ test }: Props) => {
   const { user } = useContext(AuthContext);
   const [percentCompleted, setPercentCompleted] = useState(0);
   const [percentCorrect, setPercentCorrect] = useState(0);
-  const [deleteTest, { data, loading, error }] = useMutation(DELETE_TEST, {
+  const [deleteTest] = useMutation(DELETE_TEST, {
     refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
   });
 

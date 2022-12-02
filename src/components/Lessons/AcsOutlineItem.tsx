@@ -1,6 +1,5 @@
-import { useEffect } from "react";
-import ACSOutline from "../../Models/ACSModels/ACSOutline";
-import NewTask from "../../Models/LessonsModels/NewTask";
+import ACSOutline from "../../Models/AirmanCertificationStandard.ts";
+import NewTask from "../../Models/NewTask";
 import "./AcsOutlineItem.css";
 import AOOOutlineItem from "./AOOOutlineItem";
 

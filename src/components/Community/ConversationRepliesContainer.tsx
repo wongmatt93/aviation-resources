@@ -1,8 +1,8 @@
 import "./ConversationRepliesContainer.css";
 import Modal from "react-modal";
 import { useState } from "react";
-import CommunityConversationReplies from "../../Models/CommunityModels/CommunityConversationReplies";
 import ConversationRepliesCard from "./ConversationRepliesCard";
+import { CommunityConversationReplies } from "../../Models/CommunityConversation";
 
 Modal.setAppElement("#root");
 

@@ -1,9 +1,9 @@
 import ResourceCard from "./ResourceCard";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import "./ResourcesContainer.css";
 import { useEffect, useState } from "react";
 import { GET_RESOURCES } from "../../GraphQL/Queries";
-import Resource from "../../Models/ResourceModels/Resource";
+import Resource from "../../Models/Resource";
 
 interface Props {
   search: string;
@@ -17,6 +17,9 @@ const ResourcesContainer = ({ search }: Props) => {
   useEffect(() => {
     data && setResources(data.resources);
   }, [data]);
+
+  if (loading) return <p>"Loading..."</p>;
+  if (error) return <p>`Loading error! ${error.message}`</p>;
 
   return (
     <ul className="ResourcesContainer">

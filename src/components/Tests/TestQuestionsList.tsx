@@ -1,8 +1,8 @@
 import "./TestQuestionsList.css";
 import { useState } from "react";
 import Modal from "react-modal";
-import Test from "../../Models/TestsModels/Test";
 import TestQuestionCard from "./TestQuestionCard";
+import { Test } from "../../Models/Test";
 
 Modal.setAppElement("#root");
 

@@ -1,20 +1,20 @@
 import "./NewTestForm.css";
 import Modal from "react-modal";
 import { FormEvent, useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_ACS, GET_QUESTIONS } from "../../GraphQL/Queries";
-import ACSOutline from "../../Models/ACSModels/ACSOutline";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_ACS, GET_QUESTIONS, GET_TESTS } from "../../GraphQL/Queries";
+import ACSOutline from "../../Models/AirmanCertificationStandard.ts";
 import AppUser from "../../Models/AppUser";
-import Question from "../../Models/TestsModels/Question";
+import { INSERT_TEST } from "../../GraphQL/Mutations";
+import { Question } from "../../Models/Test";
 
 Modal.setAppElement("#root");
 
 interface Props {
   user: AppUser | null;
-  addTest: ({}) => {};
 }
 
-const NewTestForm = ({ user, addTest }: Props) => {
+const NewTestForm = ({ user }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [numQuestions, setNumQuestions] = useState(50);
   const [acs, setAcs] = useState("");
@@ -27,6 +27,9 @@ const NewTestForm = ({ user, addTest }: Props) => {
 
   const resACS = useQuery(GET_ACS);
   const resQuestions = useQuery(GET_QUESTIONS);
+  const [addTest, { loading, error }] = useMutation(INSERT_TEST, {
+    refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
+  });
 
   const openModal = (): void => {
     setIsOpen(true);
@@ -40,7 +43,7 @@ const NewTestForm = ({ user, addTest }: Props) => {
   const shuffleQuestions = (questions: Question[]): Question[] => {
     let currentIndex = questions.length,
       randomIndex;
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
       [questions[currentIndex], questions[randomIndex]] = [
@@ -94,7 +97,10 @@ const NewTestForm = ({ user, addTest }: Props) => {
         }
       }
     }
-  }, [acs]);
+  }, [acs, acsArray, numQuestions, questions]);
+
+  if (loading) return <p>"Submitting..."</p>;
+  if (error) return <p>`Submission error! ${error.message}`</p>;
 
   return (
     <div className="NewTestForm">

@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GET_COMMUNITY_POSTS } from "../../GraphQL/Queries";
-import CommunityConversation from "../../Models/CommunityModels/CommunityConversation";
+import { CommunityConversation } from "../../Models/CommunityConversation";
 import "./CommunityContainer.css";
 import CommunityConversationCard from "./CommunityConversationCard";
 
@@ -15,6 +15,9 @@ const CommunityContainer = () => {
   useEffect(() => {
     data && setCommunityConversations(data.community_conversation);
   }, [data]);
+
+  if (loading) return <p>"Loading..."</p>;
+  if (error) return <p>`Loading error! ${error.message}`</p>;
 
   return (
     <ul className="CommunityContainer">

@@ -1,30 +1,35 @@
 import "./NewLessonForm.css";
 import Modal from "react-modal";
 import { FormEvent, useEffect, useState } from "react";
-import { GET_ACS } from "../../GraphQL/Queries";
-import { useQuery } from "@apollo/client";
-import ACSOutline from "../../Models/ACSModels/ACSOutline";
+import { GET_ACS, GET_LESSONS } from "../../GraphQL/Queries";
+import { useMutation, useQuery } from "@apollo/client";
+import ACSOutline from "../../Models/AirmanCertificationStandard.ts";
 import AppUser from "../../Models/AppUser";
 import AcsOutlineItem from "./AcsOutlineItem";
-import NewTask from "../../Models/LessonsModels/NewTask";
+import { INSERT_LESSON } from "../../GraphQL/Mutations";
+import NewTask from "../../Models/NewTask";
 
 Modal.setAppElement("#root");
 
 interface Props {
   user: AppUser | null;
-  addLesson: ({}) => {};
 }
 
-const NewLessonForm = ({ user, addLesson }: Props) => {
+const NewLessonForm = ({ user }: Props) => {
   const [name, setName] = useState("");
   const [taskIds, setTaskIds] = useState<NewTask[]>([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [acs, setAcs] = useState<ACSOutline[]>([]);
-  const { error, loading, data } = useQuery(GET_ACS);
+  const resACS = useQuery(GET_ACS);
+  const [addLesson, { loading, error }] = useMutation(INSERT_LESSON, {
+    refetchQueries: [
+      { query: GET_LESSONS, variables: { id: user && user.id } },
+    ],
+  });
 
   useEffect(() => {
-    data && setAcs(data.airman_certification_standards);
-  }, [data]);
+    resACS.data && setAcs(resACS.data.airman_certification_standards);
+  }, [resACS.data]);
 
   const openModal = (): void => setIsOpen(true);
   const closeModal = (): void => setIsOpen(false);
@@ -34,6 +39,11 @@ const NewLessonForm = ({ user, addLesson }: Props) => {
     addLesson({ variables: { name, id: user && user.id, data: taskIds } });
     closeModal();
   };
+
+  if (loading) return <p>"Submitting..."</p>;
+  if (error) return <p>`Submission error! ${error.message}`</p>;
+  if (resACS.loading) return <p>"Loading..."</p>;
+  if (resACS.error) return <p>`Submission error! ${resACS.error.message}`</p>;
 
   return (
     <div className="NewLessonForm">

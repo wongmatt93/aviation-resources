@@ -1,11 +1,10 @@
-import TestQuestion from "../../Models/TestsModels/TestQuestion";
 import { useMutation } from "@apollo/client";
 import { UPDATE_TEST_QUESTION } from "../../GraphQL/Mutations";
 import { GET_TESTS } from "../../GraphQL/Queries";
 import AuthContext from "../../Context/AuthContext";
 import "./TestQuestionCard.css";
 import { useContext } from "react";
-import Answer from "../../Models/TestsModels/Answer";
+import { Answer, TestQuestion } from "../../Models/Test";
 
 interface Props {
   question: TestQuestion;
@@ -31,14 +30,9 @@ const cardStyles = {
 
 const TestQuestionCard = ({ question }: Props) => {
   const { user } = useContext(AuthContext);
-  const [updateTest, { data, loading, error }] = useMutation(
-    UPDATE_TEST_QUESTION,
-    {
-      refetchQueries: [
-        { query: GET_TESTS, variables: { id: user && user.id } },
-      ],
-    }
-  );
+  const [updateTest, { loading, error }] = useMutation(UPDATE_TEST_QUESTION, {
+    refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
+  });
 
   const handleClick = (question: TestQuestion, answer: Answer): void => {
     updateTest({
@@ -51,6 +45,9 @@ const TestQuestionCard = ({ question }: Props) => {
       },
     });
   };
+
+  if (loading) return <p>"Submitting..."</p>;
+  if (error) return <p>`Submission error! ${error.message}`</p>;
 
   return (
     <li
