@@ -42,8 +42,6 @@ const NewLessonForm = ({ user }: Props) => {
 
   if (loading) return <p>"Submitting..."</p>;
   if (error) return <p>`Submission error! ${error.message}`</p>;
-  if (resACS.loading) return <p>"Loading..."</p>;
-  if (resACS.error) return <p>`Submission error! ${resACS.error.message}`</p>;
 
   return (
     <div className="NewLessonForm">

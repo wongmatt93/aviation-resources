@@ -1,19 +1,24 @@
-import "./NewCommunityPostForm.css";
+import "./NewCommunityReplyForm.css";
 import Modal from "react-modal";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useMutation } from "@apollo/client";
-import { INSERT_COMMUNITY_POST } from "../../GraphQL/Mutations";
+import { INSERT_COMMUNITY_REPLY } from "../../GraphQL/Mutations";
 import { GET_COMMUNITY_POSTS } from "../../GraphQL/Queries";
-import AuthContext from "../../Context/AuthContext";
+import AppUser from "../../Models/AppUser";
+import { CommunityConversation } from "../../Models/CommunityConversation";
 
 Modal.setAppElement("#root");
 
-const NewCommunityPostForm = () => {
-  const { user } = useContext(AuthContext);
+interface Props {
+  conversation: CommunityConversation;
+  user: AppUser | null;
+}
+
+const NewCommunityReplyForm = ({ conversation, user }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [postContent, setPostContent] = useState("");
-  const [addCommunityPost, { loading, error }] = useMutation(
-    INSERT_COMMUNITY_POST,
+  const [replyContent, setReplyContent] = useState("");
+  const [addReplyPost, { loading, error }] = useMutation(
+    INSERT_COMMUNITY_REPLY,
     {
       refetchQueries: [{ query: GET_COMMUNITY_POSTS }],
     }
@@ -24,8 +29,12 @@ const NewCommunityPostForm = () => {
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
-    addCommunityPost({
-      variables: { id: user!.id, text: postContent },
+    addReplyPost({
+      variables: {
+        post_id: conversation.id,
+        text: replyContent,
+        user_id: user!.id,
+      },
     });
     closeModal();
   };
@@ -34,8 +43,8 @@ const NewCommunityPostForm = () => {
   if (error) return <p>`Submission error! ${error.message}`</p>;
 
   return (
-    <div className="NewCommunityPostForm">
-      <button onClick={openModal}>New Post</button>
+    <div className="NewCommunityReplyForm">
+      <button onClick={openModal}>Reply</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -44,16 +53,16 @@ const NewCommunityPostForm = () => {
         overlayClassName="new-post-modal-overlay"
       >
         <div className="new-post-header">
-          <h2>New Post</h2>
+          <h2>Reply</h2>
           <button onClick={closeModal}>close</button>
         </div>
         <form onSubmit={handleSubmit}>
           <textarea
             name="post"
             id="post"
-            placeholder="Write New Post..."
-            value={postContent}
-            onChange={(e) => setPostContent(e.target.value)}
+            placeholder="Write New Reply..."
+            value={replyContent}
+            onChange={(e) => setReplyContent(e.target.value)}
           ></textarea>
           <button>Post</button>
         </form>
@@ -62,4 +71,4 @@ const NewCommunityPostForm = () => {
   );
 };
 
-export default NewCommunityPostForm;
+export default NewCommunityReplyForm;

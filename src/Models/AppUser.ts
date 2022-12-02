@@ -8,7 +8,7 @@ import { Test } from "./Test";
 export default interface AppUser {
   created_at: string;
   email: string;
-  highest_acs: string;
+  highest_acs: string | null;
   id: string;
   name: string | null;
   purpose: string | null;

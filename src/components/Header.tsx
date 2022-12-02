@@ -1,10 +1,14 @@
 import "./Header.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Image } from "semantic-ui-react";
 import Logo from "../assets/Logo.svg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import AuthContext from "../Context/AuthContext";
+import LoginModal from "./User/LoginModal";
 
 const Header = () => {
+  const { signedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -44,6 +48,11 @@ const Header = () => {
           </Link>
         </ul>
       </nav>
+      {signedIn ? (
+        <button onClick={() => navigate("/user-profile")}>Profile</button>
+      ) : (
+        <LoginModal />
+      )}
     </header>
   );
 };

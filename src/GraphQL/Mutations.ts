@@ -73,3 +73,45 @@ export const DELETE_TEST = gql`
     }
   }
 `;
+
+export const INSERT_COMMUNITY_POST = gql`
+  mutation NewCommunityPostForm($id: uuid!, $text: String!) {
+    insert_community_conversation(
+      objects: { publishing_user_id: $id, conversation_text: $text }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
+export const DELETE_COMMUNITY_POST = gql`
+  mutation CommunityConversationCard($id: uuid!) {
+    delete_community_conversation(where: { id: { _eq: $id } }) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
+export const INSERT_COMMUNITY_REPLY = gql`
+  mutation NewCommunityReplyForm(
+    $post_id: uuid!
+    $text: String!
+    $user_id: uuid!
+  ) {
+    insert_community_conversation_reply(
+      objects: {
+        community_conversation_reply_text: $text
+        community_conversation_id: $post_id
+        publishing_user_id: $user_id
+      }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`;

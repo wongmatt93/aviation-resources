@@ -26,7 +26,7 @@ const TestsContainer = ({ user }: Props) => {
   return (
     <ul className="TestsContainer">
       {tests.map((test) => (
-        <TestCard key={test.id} test={test} />
+        <TestCard key={test.id} test={test} user={user} />
       ))}
     </ul>
   );

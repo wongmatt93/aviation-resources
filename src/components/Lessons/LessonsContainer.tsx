@@ -26,7 +26,7 @@ const LessonsContainer = ({ user }: Props) => {
   return (
     <ul className="LessonsContainer">
       {lessons.map((lesson) => (
-        <LessonCard key={lesson.id} lesson={lesson} />
+        <LessonCard key={lesson.id} lesson={lesson} user={user} />
       ))}
     </ul>
   );

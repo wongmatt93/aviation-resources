@@ -108,6 +108,55 @@ export const GET_LESSONS = gql`
   }
 `;
 
+export const GET_GUEST_LESSON = gql`
+  query LessonsContainer {
+    lesson(where: { name: { _eq: "Demo Lesson" } }) {
+      id
+      created_at
+      created_by_user_id
+      name
+      updated_at
+      lesson_tasks {
+        id
+        completed
+        lesson_id
+        notes
+        task_id
+        task {
+          id
+          created_at
+          area_of_operation_id
+          knowledge_description
+          letter
+          name
+          objective
+          risk_management_description
+          skills_description
+          updated_at
+          area_of_operation {
+            id
+            airman_certification_standards_id
+            created_at
+            name
+            numeral
+            order
+            updated_at
+            airman_certification_standard {
+              id
+              abbreviation
+              created_at
+              icon_value
+              name
+              ready
+              updated_at
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const GET_TESTS = gql`
   query TestsContainer($id: uuid!) {
     test(where: { app_user_id: { _eq: $id } }) {

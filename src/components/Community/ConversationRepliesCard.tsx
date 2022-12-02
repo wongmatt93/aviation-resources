@@ -22,7 +22,7 @@ const ConversationRepliesCard = ({ reply }: Props) => {
           <p>Created At</p>
           <p>{dateString}</p>
         </div>
-        <p>{reply.app_user.name || "Unknown app user"}</p>
+        <p>{reply.app_user.name ? reply.app_user.name : "Unknown app user"}</p>
       </div>
       <h4>{reply.community_conversation_reply_text}</h4>
     </li>

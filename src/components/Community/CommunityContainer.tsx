@@ -1,11 +1,16 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GET_COMMUNITY_POSTS } from "../../GraphQL/Queries";
+import AppUser from "../../Models/AppUser";
 import { CommunityConversation } from "../../Models/CommunityConversation";
 import "./CommunityContainer.css";
 import CommunityConversationCard from "./CommunityConversationCard";
 
-const CommunityContainer = () => {
+interface Props {
+  user: AppUser | null;
+}
+
+const CommunityContainer = ({ user }: Props) => {
   const [communityConversations, setCommunityConversations] = useState<
     CommunityConversation[]
   >([]);
@@ -25,6 +30,7 @@ const CommunityContainer = () => {
         <CommunityConversationCard
           key={conversation.id}
           conversation={conversation}
+          user={user}
         />
       ))}
     </ul>
