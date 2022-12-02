@@ -5,11 +5,11 @@ import "./LessonsPage.css";
 import NewLessonForm from "./NewLessonForm";
 
 const LessonsPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, signedIn } = useContext(AuthContext);
 
   return (
     <main className="LessonsPage">
-      <NewLessonForm user={user} />
+      {signedIn && <NewLessonForm user={user} />}
       <LessonsContainer user={user} />
     </main>
   );

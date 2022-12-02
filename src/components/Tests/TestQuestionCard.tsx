@@ -1,13 +1,13 @@
 import { useMutation } from "@apollo/client";
 import { UPDATE_TEST_QUESTION } from "../../GraphQL/Mutations";
 import { GET_TESTS } from "../../GraphQL/Queries";
-import AuthContext from "../../Context/AuthContext";
 import "./TestQuestionCard.css";
-import { useContext } from "react";
 import { Answer, TestQuestion } from "../../Models/Test";
+import AppUser from "../../Models/AppUser";
 
 interface Props {
   question: TestQuestion;
+  user: AppUser | null;
 }
 
 const cardStyles = {
@@ -28,8 +28,7 @@ const cardStyles = {
   },
 };
 
-const TestQuestionCard = ({ question }: Props) => {
-  const { user } = useContext(AuthContext);
+const TestQuestionCard = ({ question, user }: Props) => {
   const [updateTest, { loading, error }] = useMutation(UPDATE_TEST_QUESTION, {
     refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
   });

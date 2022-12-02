@@ -1,17 +1,17 @@
 import { useMutation } from "@apollo/client";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "../../Context/AuthContext";
+import { useEffect, useState } from "react";
 import { DELETE_LESSON } from "../../GraphQL/Mutations";
 import { GET_LESSONS } from "../../GraphQL/Queries";
+import AppUser from "../../Models/AppUser";
 import { Lesson } from "../../Models/Lesson";
 import "./LessonCard.css";
 
 interface Props {
   lesson: Lesson;
+  user: AppUser | null;
 }
 
-const LessonCard = ({ lesson }: Props) => {
-  const { user } = useContext(AuthContext);
+const LessonCard = ({ lesson, user }: Props) => {
   const [createdDate, setCreatedDate] = useState("");
   const [deleteLesson] = useMutation(DELETE_LESSON, {
     refetchQueries: [

@@ -1,18 +1,18 @@
 import { useMutation } from "@apollo/client";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "../../Context/AuthContext";
+import { useEffect, useState } from "react";
 import { DELETE_TEST } from "../../GraphQL/Mutations";
 import { GET_TESTS } from "../../GraphQL/Queries";
+import AppUser from "../../Models/AppUser";
 import { Test } from "../../Models/Test";
 import "./TestCard.css";
 import TestQuestionsList from "./TestQuestionsList";
 
 interface Props {
   test: Test;
+  user: AppUser | null;
 }
 
-const TestCard = ({ test }: Props) => {
-  const { user } = useContext(AuthContext);
+const TestCard = ({ test, user }: Props) => {
   const [percentCompleted, setPercentCompleted] = useState(0);
   const [percentCorrect, setPercentCorrect] = useState(0);
   const [deleteTest] = useMutation(DELETE_TEST, {
@@ -46,7 +46,7 @@ const TestCard = ({ test }: Props) => {
       <h3>{test.airman_certification_standard.abbreviation}</h3>
       <p>Percent Completed: {Math.trunc(percentCompleted)}%</p>
       <p>Percent Correct: {Math.trunc(percentCorrect)}%</p>
-      <TestQuestionsList test={test} />
+      <TestQuestionsList test={test} user={user} />
       <button onClick={handleClick}>delete</button>
     </li>
   );
