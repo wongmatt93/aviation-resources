@@ -10,6 +10,7 @@ interface Props {
   user: AppUser | null;
 }
 
+// added dynamic styles which get printed based on answers
 const cardStyles = {
   unanswered: {
     border: "1px solid black",
@@ -29,6 +30,7 @@ const cardStyles = {
 };
 
 const TestQuestionCard = ({ question, user }: Props) => {
+  // graphQL mutation to update every time a question is answered
   const [updateTest, { loading, error }] = useMutation(UPDATE_TEST_QUESTION, {
     refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
   });

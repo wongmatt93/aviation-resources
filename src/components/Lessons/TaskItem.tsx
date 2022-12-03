@@ -10,17 +10,23 @@ interface Props {
 }
 
 const TaskItem = ({ task, taskIds, setTaskIds }: Props) => {
+  // controlled component for checkbox
   const [checked, setChecked] = useState<boolean>(false);
 
+  // useEffect updates the array every time a box is checked or unchecked
   useEffect(() => {
     if (checked) {
+      // adds task id to array when checked
       setTaskIds((prev) => {
         return [...prev, { task_id: task.id }];
       });
     } else {
+      // finds index number for checked item
       const index: number = taskIds.findIndex(
         (item) => item.task_id === task.id
       );
+
+      // removes checked item from array when box is unchecked
       if (index !== -1) {
         setTaskIds((prev) => [
           ...prev.slice(0, index),

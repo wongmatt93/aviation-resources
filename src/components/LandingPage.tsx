@@ -18,6 +18,7 @@ const LandingPage = () => {
     <main className="LandingPage">
       <LoginModal />
       <SignUpModal />
+      {/* redirects to Resources page like the mobile app */}
       <button onClick={() => navigate("/resources")}>Guest</button>
     </main>
   );

@@ -15,6 +15,7 @@ const TestsPage = () => {
 
   return (
     <main className="TestsPage">
+      {/* shows new community post form if user is signed in */}
       {signedIn && <NewTestForm user={user} />}
       <TestsContainer user={user} />
     </main>

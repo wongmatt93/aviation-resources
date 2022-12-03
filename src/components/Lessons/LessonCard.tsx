@@ -13,6 +13,8 @@ interface Props {
 
 const LessonCard = ({ lesson, user }: Props) => {
   const [createdDate, setCreatedDate] = useState("");
+
+  // graphQL mutation to delete lessons by lesson id
   const [deleteLesson] = useMutation(DELETE_LESSON, {
     refetchQueries: [
       { query: GET_LESSONS, variables: { id: user && user.id } },

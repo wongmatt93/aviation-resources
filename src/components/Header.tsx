@@ -48,6 +48,8 @@ const Header = () => {
           </Link>
         </ul>
       </nav>
+
+      {/* change what button shows up depending on whether user is signed in */}
       {signedIn ? (
         <button onClick={() => navigate("/user-profile")}>Profile</button>
       ) : (

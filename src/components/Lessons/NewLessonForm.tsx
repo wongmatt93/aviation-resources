@@ -16,11 +16,16 @@ interface Props {
 }
 
 const NewLessonForm = ({ user }: Props) => {
+  //controlled component for lesson name
   const [name, setName] = useState("");
+
+  //controlled component for array of task ID's
   const [taskIds, setTaskIds] = useState<NewTask[]>([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [acs, setAcs] = useState<ACSOutline[]>([]);
   const resACS = useQuery(GET_ACS);
+
+  // graphQL mutation to add lesson to database
   const [addLesson, { loading, error }] = useMutation(INSERT_LESSON, {
     refetchQueries: [
       { query: GET_LESSONS, variables: { id: user && user.id } },

@@ -9,6 +9,7 @@ const CommunityPage = () => {
 
   return (
     <main className="CommunityPage">
+      {/* shows new community post form if user is signed in */}
       {signedIn && <NewCommunityPostForm />}
       <CommunityContainer user={user} />
     </main>
