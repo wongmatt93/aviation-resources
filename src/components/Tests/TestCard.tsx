@@ -15,6 +15,8 @@ interface Props {
 const TestCard = ({ test, user }: Props) => {
   const [percentCompleted, setPercentCompleted] = useState(0);
   const [percentCorrect, setPercentCorrect] = useState(0);
+
+  // graphQL mutation to delete tests
   const [deleteTest] = useMutation(DELETE_TEST, {
     refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
   });

@@ -20,8 +20,8 @@ const LessonsContainer = ({ user }: Props) => {
     data && setLessons(data.lesson);
   }, [data]);
 
-  if (loading) return <p>"Loading..."</p>;
-  if (error) return <p>`Error! ${error.message}`</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error! {error.message}</p>;
 
   return (
     <ul className="LessonsContainer">

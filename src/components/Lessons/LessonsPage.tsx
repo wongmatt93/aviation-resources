@@ -9,6 +9,7 @@ const LessonsPage = () => {
 
   return (
     <main className="LessonsPage">
+      {/* shows new lesson form if user is signed in */}
       {signedIn && <NewLessonForm user={user} />}
       <LessonsContainer user={user} />
     </main>

@@ -16,17 +16,27 @@ interface Props {
 
 const NewTestForm = ({ user }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  // controlled component for number of questions you want on your test
   const [numQuestions, setNumQuestions] = useState(50);
   const [acs, setAcs] = useState("");
   const [acsOutline, setAcsOutline] = useState<ACSOutline | undefined>(
     undefined
   );
+
+  // array of ACS options
   const [acsArray, setAcsArray] = useState<ACSOutline[]>([]);
+
+  // all questions available from database
   const [questions, setQuestions] = useState<Question[]>([]);
+
+  // all questions that fit the filter
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
 
   const resACS = useQuery(GET_ACS);
   const resQuestions = useQuery(GET_QUESTIONS);
+
+  // mutation to add test with questions
   const [addTest, { loading, error }] = useMutation(INSERT_TEST, {
     refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
   });
@@ -40,6 +50,7 @@ const NewTestForm = ({ user }: Props) => {
     setIsOpen(false);
   };
 
+  // randomize list of questions so each test is different
   const shuffleQuestions = (questions: Question[]): Question[] => {
     let currentIndex = questions.length,
       randomIndex;
@@ -71,8 +82,11 @@ const NewTestForm = ({ user }: Props) => {
   };
 
   useEffect(() => {
+    // sets questions array to all questions from graphQL
     if (resQuestions.data) {
       setQuestions(resQuestions.data.question);
+      // sets acsArray to all 5 acs options
+      // sets default acs to the first one
       if (resACS.data) {
         const array: ACSOutline[] = resACS.data.airman_certification_standards;
         setAcsArray(resACS.data.airman_certification_standards);
@@ -88,10 +102,12 @@ const NewTestForm = ({ user }: Props) => {
       );
       setAcsOutline(outline);
       if (outline) {
+        // filters questions array to match filtered acs
         const filtered: Question[] = questions.filter(
           (question) => question.airman_certification_standard_id === outline.id
         );
         setFilteredQuestions(filtered);
+        // ensures you can't add more questions than are available
         if (numQuestions > filtered.length) {
           setNumQuestions(filtered.length);
         }
