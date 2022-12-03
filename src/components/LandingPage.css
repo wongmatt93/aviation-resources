@@ -1,0 +1,42 @@
+.LandingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.LandingPage h2 {
+  text-decoration: underline;
+  font-size: xx-large;
+}
+
+.LandingPage .user-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: rgba(20, 92, 163, 0.5);
+  width: 75%;
+  height: 50%;
+  border-radius: 1em;
+  margin-top: 4em;
+}
+
+.LandingPage .guest-option {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 2rem;
+  border: rgba(84, 98, 113, 0.8) 1px solid;
+}
+
+.LandingPage a {
+  text-decoration: none;
+  color: white;
+  font-size: medium;
+}
+
+.LandingPage .pipe {
+  color: white;
+  margin: 0 0.7em;
+}

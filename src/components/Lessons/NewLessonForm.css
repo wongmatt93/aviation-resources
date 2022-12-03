@@ -9,33 +9,19 @@
 }
 
 .new-lesson-modal {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 50%;
-  max-height: 60%;
+  max-width: 40%;
+  max-height: 90%;
   padding: 3%;
   box-sizing: border-box;
   overflow: auto;
-}
-/* 
-.new-post-modal .new-post-header {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid gray;
-  padding-bottom: 2%;
-}
-
-.new-post-modal form {
-  margin-top: 3%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .new-post-modal textarea {
@@ -44,8 +30,33 @@
   border: none;
 }
 
-@media only screen and (min-width: 768px) {
-  .new-post-modal {
-    width: 40%;
-  }
-} */
+.close-button {
+  position: fixed;
+  right: 1.5rem;
+}
+
+.new-lesson {
+  padding: 0.8rem 0;
+}
+
+.lesson-name-label {
+  padding: 0.8rem 0;
+  padding-right: 0.5rem;
+}
+
+.lesson-input {
+  margin-top: 0.3em;
+  margin-bottom: 0.8rem;
+}
+.NewLessonForm ul {
+  margin: 1rem;
+}
+.create-lesson-button {
+  position: fixed;
+  right: 36%;
+  margin-top: 0.8rem;
+}
+
+.NewLessonForm {
+  line-height: 1.6rem;
+}

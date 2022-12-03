@@ -1,0 +1,27 @@
+.TestQuestionCard {
+  padding: 1rem;
+  margin: 1em;
+  line-height: 1.5rem;
+
+}
+
+.answers-container {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px black solid;
+  font-size: smaller;
+}
+
+.certification-info {
+  font-size: x-small;
+  font-weight: bold;
+}
+
+.question {
+  font-weight: 200;
+  font-size: medium;
+}
+
+.answer:hover {
+  cursor: pointer;
+}
+
