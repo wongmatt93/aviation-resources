@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LoginModal from "./User/LoginModal";
 import SignUpModal from "./User/SignUpModal";
 import { useContext, useEffect } from "react";
@@ -16,10 +16,21 @@ const LandingPage = () => {
 
   return (
     <main className="LandingPage">
-      <LoginModal />
-      <SignUpModal />
-      {/* redirects to Resources page like the mobile app */}
-      <button onClick={() => navigate("/resources")}>Guest</button>
+      <h2>Aviation Resources</h2>
+      <p>Please Select an option to continue.</p>
+      <div className="user-options">
+        <LoginModal />
+        <SignUpModal />
+        {/* redirects to Resources page like the mobile app */}
+        <button onClick={() => navigate("/resources")} className="guest-option">
+          Guest
+        </button>
+        <div>
+          <Link to="/">Forgot Password</Link>
+          <span className="pipe">|</span>
+          <Link to="/">Confirm Code</Link>
+        </div>
+      </div>
     </main>
   );
 };

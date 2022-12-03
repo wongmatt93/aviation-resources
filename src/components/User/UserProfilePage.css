@@ -1,0 +1,59 @@
+.UserProfilePage {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  border-bottom: 1px black solid;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(145, 140, 140, 0.695);
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255);
+  margin: 1rem 0;
+  width: 70%;
+  height: 80%;
+  padding: 3rem;
+  justify-content: center;
+}
+
+.email {
+  font-weight: 200;
+}
+
+.user-img-and-email {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.user-name {
+  margin: 1rem;
+  border-bottom: 1px black solid;
+}
+
+.purpose-choices {
+  margin: 0.5rem;
+  border-bottom: 1px black solid;
+}
+
+.license {
+  margin: 1rem;
+}
+
+.logout-delete-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+.UserProfilePage p {
+  margin: 1rem 0;
+}

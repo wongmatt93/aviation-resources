@@ -58,11 +58,16 @@ const NewLessonForm = ({ user }: Props) => {
         className="new-lesson-modal"
         overlayClassName="new-lesson-modal-overlay"
       >
-        <button onClick={closeModal}>close</button>
+        <button className="close-button" onClick={closeModal}>
+          x
+        </button>
         <div className="new-lesson">New Lesson</div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Lesson Name</label>
+          <label className="lesson-name-label" htmlFor="name">
+            Lesson Name
+          </label>
           <input
+            className="lesson-input"
             type="text"
             name="name"
             id="name"
@@ -79,7 +84,7 @@ const NewLessonForm = ({ user }: Props) => {
               />
             ))}
           </ul>
-          <button>Create Lesson</button>
+          <button className="create-lesson-button">Create Lesson</button>
         </form>
       </Modal>
     </div>

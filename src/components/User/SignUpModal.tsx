@@ -16,7 +16,7 @@ const SignUpModal = () => {
 
   return (
     <div className="SignUpModal">
-      <button onClick={openModal}>Sign Up</button>
+      <button className="signup-options" onClick={openModal}>Sign Up</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

@@ -125,24 +125,35 @@ const NewTestForm = ({ user }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
+        className="new-test-modal"
+        overlayClassName="new-test-modal-overlay"
       >
-        <button onClick={closeModal}>close</button>
-        <div>New Test</div>
+        <div className="new-test-modal-header">
+          <h3>New Test</h3>
+          <button onClick={closeModal}>x</button>
+        </div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="selected-acs">Selected ACS</label>
-          <select
-            name="selected-acs"
-            id="selected-acs"
-            onChange={(e) => setAcs(e.target.value)}
-          >
-            {acsArray.map((item) => (
-              <option key={item.id} value={item.abbreviation}>
-                {item.abbreviation}
-              </option>
-            ))}
-          </select>
-          <p>Available Questions: {filteredQuestions.length}</p>
-          <label htmlFor="num-quesitons">
+          <div className="selected-acs">
+            <div className="selected-acs-form-input">
+              <label htmlFor="selected-acs">Selected ACS</label>
+              <select
+                name="selected-acs"
+                id="selected-acs"
+                onChange={(e) => setAcs(e.target.value)}
+              >
+                {acsArray.map((item) => (
+                  <option key={item.id} value={item.abbreviation}>
+                    {item.abbreviation}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <p className="acs-name">{acsOutline && acsOutline.name}</p>
+          </div>
+          <p className="available">
+            Available Questions: {filteredQuestions.length}
+          </p>
+          <label className="num-questions" htmlFor="num-quesitons">
             Selected Questions: {numQuestions}{" "}
           </label>
           <input
@@ -154,7 +165,7 @@ const NewTestForm = ({ user }: Props) => {
             value={numQuestions}
             onChange={(e) => setNumQuestions(parseInt(e.target.value))}
           />
-          <button>Create Test</button>
+          <button className="create-button">+ Create Test</button>
         </form>
       </Modal>
     </div>

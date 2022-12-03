@@ -1,30 +1,63 @@
 .LessonCard {
+  display: flex;
+  flex-direction: column;
   border: 1px solid rgba(145, 140, 140, 0.695);
-  padding: 0.3rem;
+  padding: 0.5rem 2rem;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.7);
   margin: 1rem 0;
-  width: 80%;
+  width: 60%;
+  max-height: 30%;
+  line-height: 1.5rem;
+}
+
+.LessonCard .info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.LessonCard .lesson-name-info {
+  font-weight: 100;
+  padding: 0.2rem 0;
+  font-size: small;
+  font-weight: 100;
+  margin: 0;
 }
 
 .LessonCard .name-styles {
   font-weight: 100;
-  padding: 0.2rem;
+  font-size: smaller;
 }
 
-.LessonCard h3 {
-  font-size: small;
+.LessonCard .lesson-name-info h4 {
+  font-size: medium;
+  font-weight: 100;
+}
+
+.LessonCard .created-at-info {
+  padding: 0.2rem 0;
 }
 
 .LessonCard ul {
   display: flex;
   overflow: auto;
-}
-
-.LessonCard .created-at-styles {
-  padding: 0.2rem;
+  white-space: nowrap;
 }
 
 .LessonCard .label-bottom-text {
   font-size: small;
+}
+
+.LessonCard .certification-abbreviations {
+  padding: 0.5rem 0;
+  justify-content: center;
+}
+
+.LessonCard .delete-button {
+  margin: 1rem 0;
+  width: 5rem;
+  justify-content: flex-end;
+  align-self: flex-end;
 }

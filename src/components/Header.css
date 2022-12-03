@@ -3,6 +3,7 @@
   padding: 1em;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 1px black solid;
 }
 
 .Header h1 {

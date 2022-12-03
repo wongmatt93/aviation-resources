@@ -19,7 +19,9 @@ const LoginModal = () => {
 
   return (
     <div className="LoginModal">
-      <button onClick={openModal}>Log In</button>
+      <button className="login-option" onClick={openModal}>
+        Log In
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

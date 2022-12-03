@@ -33,12 +33,20 @@ const LessonCard = ({ lesson, user }: Props) => {
 
   return (
     <li className="LessonCard">
-      <h3 className="name-styles">Lesson Name</h3>
-      <h4 className="name-styles">{lesson.name}</h4>
+      <div className="info-container">
+        <div className="lesson-name-info">
+          <h3 className="name-styles">Lesson Name</h3>
+          <h4>{lesson.name}</h4>
+        </div>
+        <div className="created-at-info">
+          <p className="label-bottom-text">Created On</p>
+          <p className="bottom-text-date">{createdDate}</p>
+        </div>
+      </div>
       <ul>
         {lesson.lesson_tasks.map((task) => (
           <li key={task.id}>
-            <p>
+            <p className="certification-abrreviations">
               {
                 task.task.area_of_operation.airman_certification_standard
                   .abbreviation
@@ -48,9 +56,10 @@ const LessonCard = ({ lesson, user }: Props) => {
           </li>
         ))}
       </ul>
-      <p className="created-at-styles label-bottom-text">Created On</p>
-      <p className="created-at-styles bottom-text-date">{createdDate}</p>
-      <button onClick={handleClick}>Delete</button>
+
+      <button className="delete-button" onClick={handleClick}>
+        Delete
+      </button>
     </li>
   );
 };

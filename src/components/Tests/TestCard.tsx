@@ -48,8 +48,10 @@ const TestCard = ({ test, user }: Props) => {
       <h3>{test.airman_certification_standard.abbreviation}</h3>
       <p>Percent Completed: {Math.trunc(percentCompleted)}%</p>
       <p>Percent Correct: {Math.trunc(percentCorrect)}%</p>
-      <TestQuestionsList test={test} user={user} />
-      <button onClick={handleClick}>delete</button>
+      <div className="button-container">
+        <TestQuestionsList test={test} user={user} />
+        <button onClick={handleClick}>delete</button>
+      </div>
     </li>
   );
 };

@@ -1,0 +1,15 @@
+.TestsPage {
+  flex: 1;
+  display: flex;
+}
+
+.TestsPage .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3em;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3em;
+  font-size: small;
+}

@@ -10,8 +10,8 @@ interface Props {
 
 const AuthContextProvider = ({ children }: Props) => {
   //Default ID is guest profile
-  const [id, setId] = useState<string>("2d2d5461-50ec-4e5f-bf5e-b868b2b10aac");
-  const [signedIn, setSignedIn] = useState(false);
+  const [id, setId] = useState<string>("65edcf49-c7aa-4389-a842-66733ba2e867");
+  const [signedIn, setSignedIn] = useState(true);
   const [user, setUser] = useState<AppUser | null>(null);
   const { error, data } = useQuery(GET_APP_USERS, {
     variables: { id },

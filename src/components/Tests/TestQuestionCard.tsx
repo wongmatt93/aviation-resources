@@ -12,9 +12,6 @@ interface Props {
 
 // added dynamic styles which get printed based on answers
 const cardStyles = {
-  unanswered: {
-    border: "1px solid black",
-  },
   answeredCorrectly: {
     border: "1px solid green",
   },
@@ -31,7 +28,7 @@ const cardStyles = {
 
 const TestQuestionCard = ({ question, user }: Props) => {
   // graphQL mutation to update every time a question is answered
-  const [updateTest, { loading, error }] = useMutation(UPDATE_TEST_QUESTION, {
+  const [updateTest, { error }] = useMutation(UPDATE_TEST_QUESTION, {
     refetchQueries: [{ query: GET_TESTS, variables: { id: user && user.id } }],
   });
 
@@ -47,31 +44,31 @@ const TestQuestionCard = ({ question, user }: Props) => {
     });
   };
 
-  if (loading) return <p>"Submitting..."</p>;
   if (error) return <p>`Submission error! ${error.message}`</p>;
 
   return (
     <li
       className="TestQuestionCard"
       style={
-        question.user_answered_correctly === null
-          ? cardStyles.unanswered
-          : question.user_answered_correctly
+        question.user_answered_correctly
           ? cardStyles.answeredCorrectly
-          : cardStyles.answeredIncorrectly
+          : question.user_answered_correctly === false
+          ? cardStyles.answeredIncorrectly
+          : undefined
       }
     >
-      <p>
+      <p className="certification-info">
         {question.question.airman_certification_standard.abbreviation}{" "}
         {question.question.reference} {question.question.airman_categories}
       </p>
-      <h4>{question.question.display_text}</h4>
-      <ul>
+      <h4 className="question">{question.question.display_text}</h4>
+      <ul className="answers-container">
         {question.question.answers
           .slice()
           .sort((a, b) => a.display_letter.localeCompare(b.display_letter))
           .map((answer) => (
             <li
+              className="answer"
               key={answer.id}
               onClick={
                 question.user_answered_correctly === null

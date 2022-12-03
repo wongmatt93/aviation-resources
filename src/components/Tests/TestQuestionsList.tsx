@@ -25,9 +25,13 @@ const TestQuestionsList = ({ test, user }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
+        className="test-modal"
+        overlayClassName="test-modal-overlay"
       >
-        <button onClick={closeModal}>close</button>
-        <h3>Test</h3>
+        <button className="x" onClick={closeModal}>
+          x
+        </button>
+
         <ul>
           {test.test_questions
             .slice()

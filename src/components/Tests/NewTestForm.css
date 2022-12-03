@@ -1,0 +1,73 @@
+.new-test-modal-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.new-test-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  max-height: 90%;
+  padding: 2em;
+  box-sizing: border-box;
+  overflow: auto;
+  justify-content: flex-start;
+}
+
+.new-test-modal .new-test-modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-test-modal form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.new-test-modal .selected-acs-form-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-test-modal .acs-name {
+  font-size: smaller;
+}
+
+.new-test-modal .selected-acs,
+.new-test-modal .available,
+.new-test-modal .num-questions {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid black;
+}
+
+.new-test-modal input {
+  padding: 0.7rem 0;
+}
+
+.new-test-modal .create-button {
+  width: 35%;
+  margin: 0 auto;
+  height: 2.5em;
+  background-color: skyblue;
+  color: white;
+  border-style: none;
+  border-radius: 0.7em;
+  font-size: medium;
+}
+
+@media only screen and (max-width: 768px) {
+  .new-test-modal {
+    width: 80%;
+  }
+}
