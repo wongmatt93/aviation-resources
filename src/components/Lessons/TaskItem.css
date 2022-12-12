@@ -1,8 +1,8 @@
 .TaskItem {
   display: flex;
-  padding: 0.5rem;
-  margin-top: 0.4rem;
-  margin-bottom: 0.4rem;
   justify-content: space-between;
   border-bottom: 1px solid black;
+  padding: 1em 0;
+  box-sizing: border-box;
+  font-size: small;
 }

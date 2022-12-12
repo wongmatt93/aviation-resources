@@ -1,29 +1,27 @@
 .LessonCard {
-  display: flex;
-  flex-direction: column;
   border: 1px solid rgba(145, 140, 140, 0.695);
-  padding: 0.5rem 2rem;
-  border-radius: 1rem;
+  padding: 0.5rem 1rem;
   background-color: rgba(255, 255, 255, 0.7);
-  margin: 1rem 0;
-  width: 60%;
-  max-height: 30%;
+  margin: 0.3rem 0;
+  width: 100%;
+  height: auto;
+  height: 30%;
+  box-sizing: border-box;
   line-height: 1.5rem;
+  position: relative;
 }
 
 .LessonCard .info-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .LessonCard .lesson-name-info {
   font-weight: 100;
-  padding: 0.2rem 0;
   font-size: small;
-  font-weight: 100;
-  margin: 0;
 }
 
 .LessonCard .name-styles {
@@ -36,12 +34,9 @@
   font-weight: 100;
 }
 
-.LessonCard .created-at-info {
-  padding: 0.2rem 0;
-}
-
 .LessonCard ul {
   display: flex;
+  width: 100%;
   overflow: auto;
   white-space: nowrap;
 }
@@ -52,12 +47,26 @@
 
 .LessonCard .certification-abbreviations {
   padding: 0.5rem 0;
-  justify-content: center;
 }
 
 .LessonCard .delete-button {
-  margin: 1rem 0;
   width: 5rem;
-  justify-content: flex-end;
-  align-self: flex-end;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+.LessonCard .download-button {
+  width: 5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .LessonCard {
+    border-radius: 1rem;
+    width: 60%;
+    margin: 1rem 0;
+  }
 }

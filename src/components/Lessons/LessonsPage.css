@@ -1,0 +1,4 @@
+.LessonsPage {
+  display: flex;
+  flex-direction: column;
+}

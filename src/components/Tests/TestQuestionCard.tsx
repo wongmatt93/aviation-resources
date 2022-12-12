@@ -18,6 +18,9 @@ const cardStyles = {
   answeredIncorrectly: {
     border: "1px solid red",
   },
+  unanswered: {
+    border: "1px solid rgba(0,0,0,0)",
+  },
   correctAnswer: {
     color: "green",
   },
@@ -54,7 +57,7 @@ const TestQuestionCard = ({ question, user }: Props) => {
           ? cardStyles.answeredCorrectly
           : question.user_answered_correctly === false
           ? cardStyles.answeredIncorrectly
-          : undefined
+          : cardStyles.unanswered 
       }
     >
       <p className="certification-info">

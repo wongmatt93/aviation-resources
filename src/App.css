@@ -1,5 +1,19 @@
 /* resets */
 
+body,
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+p,
+div {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 * {
   font-family: "Open Sans", sans-serif;
 }
@@ -18,18 +32,11 @@ main {
   background-position: right;
   opacity: 0.8;
   flex: 1;
+  padding: 0.5em;
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-ul,
-li,
-p,
-div {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+@media only screen and (min-width: 768px) {
+  main {
+    padding: 1em;
+  }
 }

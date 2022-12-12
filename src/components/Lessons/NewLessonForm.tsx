@@ -55,26 +55,28 @@ const NewLessonForm = ({ user }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="new-lesson-modal"
-        overlayClassName="new-lesson-modal-overlay"
+        className="new-lesson-modal animate__animated animate__fadeInUpBig animate__faster"
+        overlayClassName="new-lesson-modal-overlay "
       >
         <button className="close-button" onClick={closeModal}>
           x
         </button>
-        <div className="new-lesson">New Lesson</div>
+        <h2 className="new-lesson">New Lesson</h2>
         <form onSubmit={handleSubmit}>
-          <label className="lesson-name-label" htmlFor="name">
-            Lesson Name
-          </label>
-          <input
-            className="lesson-input"
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <ul>
+          <div className="lesson-name">
+            <label className="lesson-name-label" htmlFor="name">
+              Lesson Name
+            </label>
+            <input
+              className="lesson-input"
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <ul className="acs-list">
             {acs.map((item) => (
               <AcsOutlineItem
                 key={item.id}
@@ -84,7 +86,9 @@ const NewLessonForm = ({ user }: Props) => {
               />
             ))}
           </ul>
+          <div className="button-container">
           <button className="create-lesson-button">Create Lesson</button>
+          </div>
         </form>
       </Modal>
     </div>

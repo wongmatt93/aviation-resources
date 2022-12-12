@@ -125,7 +125,7 @@ const NewTestForm = ({ user }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="new-test-modal"
+        className="new-test-modal animate__animated animate__fadeInUpBig animate__faster"
         overlayClassName="new-test-modal-overlay"
       >
         <div className="new-test-modal-header">
@@ -133,39 +133,43 @@ const NewTestForm = ({ user }: Props) => {
           <button onClick={closeModal}>x</button>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="selected-acs">
-            <div className="selected-acs-form-input">
-              <label htmlFor="selected-acs">Selected ACS</label>
-              <select
-                name="selected-acs"
-                id="selected-acs"
-                onChange={(e) => setAcs(e.target.value)}
-              >
-                {acsArray.map((item) => (
-                  <option key={item.id} value={item.abbreviation}>
-                    {item.abbreviation}
-                  </option>
-                ))}
-              </select>
+          <div className="form-minus-button">
+            <div className="selected-acs">
+              <div className="selected-acs-form-input">
+                <label htmlFor="selected-acs">Selected ACS</label>
+                <select
+                  name="selected-acs"
+                  id="selected-acs"
+                  onChange={(e) => setAcs(e.target.value)}
+                >
+                  {acsArray.map((item) => (
+                    <option key={item.id} value={item.abbreviation}>
+                      {item.abbreviation}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <p className="acs-name">{acsOutline && acsOutline.name}</p>
             </div>
-            <p className="acs-name">{acsOutline && acsOutline.name}</p>
+            <p className="available">
+              Available Questions: {filteredQuestions.length}
+            </p>
+            <label className="num-questions" htmlFor="num-quesitons">
+              Selected Questions: {numQuestions}{" "}
+            </label>
+            <input
+              type="range"
+              name="num-questions"
+              id="num-questions"
+              min="1"
+              max={filteredQuestions.length}
+              value={numQuestions}
+              onChange={(e) => setNumQuestions(parseInt(e.target.value))}
+            />
           </div>
-          <p className="available">
-            Available Questions: {filteredQuestions.length}
-          </p>
-          <label className="num-questions" htmlFor="num-quesitons">
-            Selected Questions: {numQuestions}{" "}
-          </label>
-          <input
-            type="range"
-            name="num-questions"
-            id="num-questions"
-            min="1"
-            max={filteredQuestions.length}
-            value={numQuestions}
-            onChange={(e) => setNumQuestions(parseInt(e.target.value))}
-          />
-          <button className="create-button">+ Create Test</button>
+          <div className="button-container">
+            <button className="create-button">+ Create Test</button>
+          </div>
         </form>
       </Modal>
     </div>

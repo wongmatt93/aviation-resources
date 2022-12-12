@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import TestQuestionCard from "./TestQuestionCard";
 import { Test } from "../../Models/Test";
 import AppUser from "../../Models/AppUser";
+import "animate.css";
 
 Modal.setAppElement("#root");
 
@@ -25,7 +26,7 @@ const TestQuestionsList = ({ test, user }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="test-modal"
+        className="test-modal animate__animated animate__fadeInUpBig animate__faster"
         overlayClassName="test-modal-overlay"
       >
         <button className="x" onClick={closeModal}>
