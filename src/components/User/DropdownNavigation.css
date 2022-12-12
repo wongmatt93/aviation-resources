@@ -1,0 +1,48 @@
+.menu-button {
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: rgba(20, 92, 163, 0);
+  border: none;
+}
+
+.nav-menu {
+  color: black;
+  display: flex;
+  background-color: rgba(250, 251, 252, 0.925);
+  flex-wrap: wrap;
+  z-index: 1;
+  height: 10rem;
+  width: 15rem;
+  margin-top: 45%;
+  margin-left: 25%;
+  padding: 0.7rem;
+  border-radius: 0.2rem;
+  text-align: center;
+}
+
+.nav-label {
+  text-align: center;
+  width: 100%;
+}
+
+.nav-link {
+  color: white;
+  margin: 0.5rem;
+  width: 40%;
+  background-color: rgba(20, 92, 163, 0.92);
+  text-decoration: none;
+  border-radius: 0.2rem;
+  text-align: center;
+  padding-top: 0.8rem;
+}
+
+.nav-link:active {
+  color: rgba(20, 92, 163, 0.8);
+}
+
+@media only screen and (min-width: 600px) {
+  .menu-button {
+    display: none;
+  }
+}

@@ -38,28 +38,29 @@ const LessonCard = ({ lesson, user }: Props) => {
           <h3 className="name-styles">Lesson Name</h3>
           <h4>{lesson.name}</h4>
         </div>
+        <p className="name-styles">Task Abbreviations</p>
+        <ul>
+          {lesson.lesson_tasks.map((task) => (
+            <li key={task.id}>
+              <p className="certification-abrreviations">
+                {
+                  task.task.area_of_operation.airman_certification_standard
+                    .abbreviation
+                }
+                - {task.task.area_of_operation.numeral} - {task.task.letter} |
+              </p>
+            </li>
+          ))}
+        </ul>
         <div className="created-at-info">
           <p className="label-bottom-text">Created On</p>
           <p className="bottom-text-date">{createdDate}</p>
         </div>
       </div>
-      <ul>
-        {lesson.lesson_tasks.map((task) => (
-          <li key={task.id}>
-            <p className="certification-abrreviations">
-              {
-                task.task.area_of_operation.airman_certification_standard
-                  .abbreviation
-              }
-              - {task.task.area_of_operation.numeral} - {task.task.letter} |
-            </p>
-          </li>
-        ))}
-      </ul>
-
       <button className="delete-button" onClick={handleClick}>
         Delete
       </button>
+      <button className="download-button">Download</button>
     </li>
   );
 };

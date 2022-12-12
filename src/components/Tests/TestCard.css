@@ -3,16 +3,23 @@
   align-items: center;
   border: 1px solid rgba(145, 140, 140, 0.695);
   padding: 1rem;
-  border-radius: 1rem;
+  box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.7);
-  margin: 1rem;
-  width: 25%;
+  margin: 0.5rem 0;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
-.button-container {
+.TestCard .info-container {
+  text-align: left;
+}
+
+.TestCard .button-container {
   margin-top: 1rem;
   display: flex;
+  flex-direction: column;
+  height: 100%;
   justify-content: space-around;
 }
 
@@ -22,5 +29,16 @@
 
 .TestCard p {
   margin: 0.5rem;
-  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .TestCard {
+    width: 25%;
+    margin: 1rem;
+    height: 25%;
+  }
+
+  .TestCard p {
+    margin-top: 1rem;
+  }
 }

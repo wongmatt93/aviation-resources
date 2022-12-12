@@ -6,57 +6,85 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .new-lesson-modal {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 40%;
-  max-height: 90%;
-  padding: 3%;
-  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
   overflow: auto;
-  justify-content: flex-start;
+  padding: 1em;
 }
 
-.new-post-modal textarea {
+.new-lesson-modal .close-button {
+  margin-top: 1em;
+  width: 20%;
+}
+
+.new-lesson-modal h2 {
   width: 100%;
-  height: 90%;
+  border-bottom: 1px solid black;
+  padding: 0.5em 0;
+}
+
+.new-lesson-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-lesson-modal .lesson-name {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  padding: 0.5em 0;
+}
+
+.new-lesson-modal .lesson-name input {
+  margin-top: 1em;
   border: none;
 }
 
-.close-button {
-  position: fixed;
-  right: 1.5rem;
+.new-lesson-modal .button-container {
+  position: sticky;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: white;
 }
 
-.new-lesson {
-  padding: 0.8rem 0;
+.new-lesson-modal .create-lesson-button {
+  width: 50%;
+  margin: 0 auto;
+  height: 2.5em;
+  background-color: skyblue;
+  color: white;
+  border-style: none;
+  border-radius: 0.7em;
+  font-size: medium;
 }
 
-.lesson-name-label {
-  padding: 0.8rem 0;
-  padding-right: 0.5rem;
+.new-lesson-modal .create-lesson-button:hover {
+  cursor: 
 }
 
-.lesson-input {
-  margin-top: 0.3em;
-  margin-bottom: 0.8rem;
-}
-.NewLessonForm ul {
-  margin: 1rem;
-}
-.create-lesson-button {
-  position: fixed;
-  right: 36%;
-  margin-top: 0.8rem;
+.new-lesson-modal .create-lesson-button:active {
+  opacity: 0.5;
 }
 
-.NewLessonForm {
-  line-height: 1.6rem;
+@media only screen and (min-width: 768px) {
+  .new-lesson-modal {
+    width: 40%;
+    height: 80%;
+    padding: 2em 2em 0 2em;
+  }
 }

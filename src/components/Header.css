@@ -34,13 +34,53 @@
   background-color: #63a0db;
 }
 
-.Header a {
-  color: white;
-  text-decoration: none;
-}
 
 .Header img {
   border-radius: 50%;
   width: auto;
   height: 70px;
+}
+
+@media only screen and (max-width: 600px) {
+  .Header {
+    height: 29px;
+    justify-content: space-between;
+  }
+
+  .Header .title-text {
+    display: none;
+  }
+  .desktop-nav {
+    display: none;
+  }
+
+  .Header img {
+    height: 40px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .nav-and-page-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .Header h2 {
+    color: rgba(20, 92, 163, 0.8);
+    font-weight: lighter;
+    margin-left: -0.8rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .Header h2 {
+    display: none;
+  }
+
+  .Header a {
+    text-decoration: none;
+    color: white;
+  }
 }

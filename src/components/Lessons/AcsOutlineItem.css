@@ -1,3 +1,10 @@
-.AcsOutlineItem {
-  padding: 1rem;
+.AcsOutlineItem h3 {
+  padding: 0.5em;
+  margin-top: 1em;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  font-size: medium;
 }

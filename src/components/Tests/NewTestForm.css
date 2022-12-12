@@ -6,33 +6,45 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .new-test-modal {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30%;
-  max-height: 90%;
-  padding: 2em;
+  background-color: rgb(216, 216, 216);
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
-  overflow: auto;
   justify-content: flex-start;
 }
 
 .new-test-modal .new-test-modal-header {
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  padding: 1em 2em;
 }
 
 .new-test-modal form {
   display: flex;
+  height: 100%;
   flex-direction: column;
-  width: 100%;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.new-test-modal .form-minus-button {
+  display: flex;
+  flex-direction: column;
+  width: calc(100%-2em);
+  background-color: white;
+  padding: 1em;
+  margin: 1em 1em 2em 1em;
+  box-sizing: border-box;
+  border-radius: 0.5em;
 }
 
 .new-test-modal .selected-acs-form-input {
@@ -55,8 +67,15 @@
   padding: 0.7rem 0;
 }
 
+.new-test-modal .button-container {
+  background-color: white;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+}
+
 .new-test-modal .create-button {
-  width: 35%;
+  width: 50%;
   margin: 0 auto;
   height: 2.5em;
   background-color: skyblue;
@@ -66,8 +85,21 @@
   font-size: medium;
 }
 
-@media only screen and (max-width: 768px) {
+.new-test-modal .create-button:hover {
+  cursor: pointer;
+}
+
+.new-test-modal .create-button:active {
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 768px) {
   .new-test-modal {
-    width: 80%;
+    width: 30%;
+    height: auto;
+  }
+
+  .new-test-modal .button-container {
+    padding: 1em 2em;
   }
 }

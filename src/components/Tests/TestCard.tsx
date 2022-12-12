@@ -45,12 +45,14 @@ const TestCard = ({ test, user }: Props) => {
 
   return (
     <li className="TestCard">
-      <h3>{test.airman_certification_standard.abbreviation}</h3>
-      <p>Percent Completed: {Math.trunc(percentCompleted)}%</p>
-      <p>Percent Correct: {Math.trunc(percentCorrect)}%</p>
+      <div className="info-container">
+        <h3>{test.airman_certification_standard.abbreviation}</h3>
+        <p>Percent Completed: {Math.trunc(percentCompleted)}%</p>
+        <p>Percent Correct: {Math.trunc(percentCorrect)}%</p>
+      </div>
       <div className="button-container">
         <TestQuestionsList test={test} user={user} />
-        <button onClick={handleClick}>delete</button>
+        <button onClick={handleClick}>Delete</button>
       </div>
     </li>
   );

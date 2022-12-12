@@ -5,7 +5,7 @@ import Logo from "../assets/Logo.svg";
 import profilePicture from "../assets/profile-img.png";
 import { useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
-import LoginModal from "./User/LoginModal";
+import DropdownNavigation from "./User/DropdownNavigation";
 
 const Header = () => {
   const { signedIn } = useContext(AuthContext);
@@ -23,9 +23,9 @@ const Header = () => {
 
   return (
     <header className="Header">
-      <Image src={Logo} alt="logo" />
-      <h1>Aviation Resources</h1>
-      <nav>
+      <Image src={Logo} alt="logo" className="logo" />
+      <h1 className="title-text">Aviation Resources</h1>
+      <nav className="desktop-nav">
         <ul>
           <Link to="/resources">
             <li className="nav-button" id="resources">
@@ -49,6 +49,10 @@ const Header = () => {
           </Link>
         </ul>
       </nav>
+      <div className="nav-and-page-info">
+        <DropdownNavigation />
+        <h2>{location.pathname.toUpperCase().slice(1)}</h2>
+      </div>
 
       {/* change what button shows up depending on whether user is signed in */}
       {

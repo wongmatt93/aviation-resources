@@ -1,13 +1,14 @@
 .TestQuestionCard {
   padding: 1rem;
-  margin: 1em;
+  margin: 1rem 0;
   line-height: 1.5rem;
-
+  box-sizing: border-box;
 }
 
 .answers-container {
   padding-bottom: 0.4rem;
   border-bottom: 1px black solid;
+  box-sizing: border-box;
   font-size: smaller;
 }
 
@@ -23,5 +24,9 @@
 
 .answer:hover {
   cursor: pointer;
+}
+
+.answer:active {
+  opacity: 0.5;
 }
 
