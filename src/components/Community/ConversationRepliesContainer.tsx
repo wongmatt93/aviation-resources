@@ -14,8 +14,14 @@ interface Props {
 const ConversationRepliesContainer = ({ conversation, replies }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const openModal = (): void => setIsOpen(true);
-  const closeModal = (): void => setIsOpen(false);
+  const openModal = (): void => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = (): void => {
+    setIsOpen(false);
+    document.body.style.overflow = "scroll";
+  };
 
   return (
     <div className="ConversationRepliesContainer">
@@ -24,7 +30,7 @@ const ConversationRepliesContainer = ({ conversation, replies }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="replies-modal"
+        className="replies-modal animate__animated animate__fadeInUpBig animate__faster"
         overlayClassName="replies-modal-overlay"
       >
         <div className="replies-header">
@@ -32,11 +38,11 @@ const ConversationRepliesContainer = ({ conversation, replies }: Props) => {
           <button onClick={closeModal}>close</button>
         </div>
         <div className="conversation-block">
-          <p className="title">Conversation</p>
-          <h3>{conversation}</h3>
+          <p className="section-title">Conversation</p>
+          <h3 className="conversation">{conversation}</h3>
         </div>
         <div className="replies-block">
-          <p className="title">Replies</p>
+          <p className="section-title">Replies</p>
           {replies.length ? (
             <ul>
               {replies.map((reply) => (

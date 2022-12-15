@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import CommunityPage from "./components/Community/CommunityPage";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import LandingPage from "./components/LandingPage";
 import LessonsPage from "./components/Lessons/LessonsPage";
 import ResourcesPage from "./components/Resources/ResourcesPage";

@@ -8,17 +8,19 @@
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .new-test-modal {
   display: flex;
   flex-direction: column;
   background-color: rgb(216, 216, 216);
-  height: 100%;
+  height: 95%;
   width: 100%;
   box-sizing: border-box;
   justify-content: flex-start;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
 }
 
 .new-test-modal .new-test-modal-header {
@@ -26,6 +28,8 @@
   justify-content: space-between;
   background-color: white;
   padding: 1em 2em;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
 }
 
 .new-test-modal form {
@@ -94,9 +98,20 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .new-test-modal-overlay {
+    align-items: center;
+  }
+
   .new-test-modal {
     width: 30%;
     height: auto;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .new-test-modal .new-test-modal-header {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
   }
 
   .new-test-modal .button-container {

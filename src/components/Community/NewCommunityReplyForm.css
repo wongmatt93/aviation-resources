@@ -1,0 +1,69 @@
+.new-reply-modal-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-reply-modal {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.new-reply-modal .new-reply-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding-bottom: 2%;
+}
+
+.new-reply-modal form {
+  margin-top: 1em;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-reply-modal textarea {
+  width: 100%;
+  height: 90%;
+  border: none;
+}
+
+.new-reply-modal form button {
+  width: 50%;
+  margin: 0 auto;
+  height: 2.5em;
+  background-color: skyblue;
+  color: white;
+  border-style: none;
+  border-radius: 0.7em;
+  font-size: medium;
+}
+
+.new-reply-modal form button:hover {
+  cursor: pointer;
+}
+
+.new-reply-modal form button:active {
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 768px) {
+  .new-reply-modal {
+    width: 40%;
+    height: 60%;
+  }
+}

@@ -1,11 +1,11 @@
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Image } from "semantic-ui-react";
-import Logo from "../assets/Logo.svg";
-import profilePicture from "../assets/profile-img.png";
+import Logo from "../../assets/Logo.svg";
+import profilePicture from "../../assets/profile-img.png";
 import { useContext, useEffect } from "react";
-import AuthContext from "../Context/AuthContext";
-import DropdownNavigation from "./User/DropdownNavigation";
+import AuthContext from "../../Context/AuthContext";
+import DropdownNavigation from "./DropdownNavigation";
 
 const Header = () => {
   const { signedIn } = useContext(AuthContext);
@@ -51,7 +51,7 @@ const Header = () => {
       </nav>
       <div className="nav-and-page-info">
         <DropdownNavigation />
-        <h2>{location.pathname.toUpperCase().slice(1)}</h2>
+        <h2>{location.pathname.toUpperCase().slice(1).replace(/-/g, " ")}</h2>
       </div>
 
       {/* change what button shows up depending on whether user is signed in */}

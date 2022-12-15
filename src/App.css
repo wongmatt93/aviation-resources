@@ -24,7 +24,7 @@ div {
   flex-direction: column;
 }
 
-main {
+.App main {
   background: linear-gradient(rgba(99, 160, 219, 0.5), rgba(99, 160, 219, 0.5)),
     url("./assets/map-app-bkgd.jpg");
   background-repeat: no-repeat;
@@ -32,11 +32,4 @@ main {
   background-position: right;
   opacity: 0.8;
   flex: 1;
-  padding: 0.5em;
-}
-
-@media only screen and (min-width: 768px) {
-  main {
-    padding: 1em;
-  }
 }

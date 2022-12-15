@@ -8,9 +8,10 @@ import "./LessonsContainer.css";
 
 interface Props {
   user: AppUser | null;
+  search: string;
 }
 
-const LessonsContainer = ({ user }: Props) => {
+const LessonsContainer = ({ user, search }: Props) => {
   const { error, loading, data } = useQuery(GET_LESSONS, {
     variables: { id: user && user.id },
   });
@@ -25,9 +26,13 @@ const LessonsContainer = ({ user }: Props) => {
 
   return (
     <ul className="LessonsContainer">
-      {lessons.map((lesson) => (
-        <LessonCard key={lesson.id} lesson={lesson} user={user} />
-      ))}
+      {lessons
+        .filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase())
+        )
+        .map((lesson) => (
+          <LessonCard key={lesson.id} lesson={lesson} user={user} />
+        ))}
     </ul>
   );
 };

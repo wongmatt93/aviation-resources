@@ -43,10 +43,12 @@ const NewTestForm = ({ user }: Props) => {
 
   const openModal = (): void => {
     setIsOpen(true);
+    document.body.style.overflow = "hidden";
     setAcs(acsArray[0].abbreviation);
   };
 
   const closeModal = (): void => {
+    document.body.style.overflow = "scroll";
     setIsOpen(false);
   };
 

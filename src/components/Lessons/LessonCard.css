@@ -4,8 +4,6 @@
   background-color: rgba(255, 255, 255, 0.7);
   margin: 0.3rem 0;
   width: 100%;
-  height: auto;
-  height: 30%;
   box-sizing: border-box;
   line-height: 1.5rem;
   position: relative;
@@ -53,20 +51,19 @@
   width: 5rem;
   position: absolute;
   right: 1rem;
-  top: 0.5rem;
+  top: 1rem;
 }
 
 .LessonCard .download-button {
   width: 5rem;
   position: absolute;
   right: 1rem;
-  bottom: 0.5rem;
+  bottom: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
   .LessonCard {
-    border-radius: 1rem;
-    width: 60%;
+    width: 40%;
     margin: 1rem 0;
   }
 }
