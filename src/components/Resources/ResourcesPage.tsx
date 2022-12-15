@@ -4,6 +4,7 @@ import "./ResourcesPage.css";
 
 const ResourcesPage = () => {
   const [search, setSearch] = useState("");
+
   return (
     <main className="ResourcesPage">
       <input

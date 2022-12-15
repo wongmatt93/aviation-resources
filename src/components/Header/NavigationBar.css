@@ -1,0 +1,25 @@
+.nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 39px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: #c0ccda;
+}
+
+.nav-button:active {
+  background-color: #63a0db;
+}
+
+.active {
+  background-color: #63a0db;
+}
+
+.Header nav ul {
+  display: flex;
+}
+
+
+

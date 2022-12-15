@@ -48,17 +48,36 @@
 }
 
 .LessonCard .delete-button {
-  width: 5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: red;
   position: absolute;
   right: 1rem;
   top: 1rem;
 }
 
+.LessonCard .delete-button:hover {
+  cursor: pointer;
+}
+
+.LessonCard .delete-button:active {
+  opacity: 0.5;
+}
+
 .LessonCard .download-button {
-  width: 5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+}
+
+.LessonCard .download-button:hover {
+  cursor: pointer;
+}
+
+.LessonCard .download-button:active {
+  opacity: 0.5;
 }
 
 @media only screen and (min-width: 768px) {

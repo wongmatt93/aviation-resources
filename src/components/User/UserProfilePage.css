@@ -16,14 +16,18 @@
 .UserProfilePage .user-img-and-email {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  margin-top: 0.5em;
 }
 
-.UserProfilePage img {
-  height: 50px;
+.UserProfilePage .user-circle {
+  height: 2rem;
+  width: 2rem;
 }
 
 .UserProfilePage .email {
   font-weight: 200;
+  font-size: medium;
 }
 
 .UserProfilePage .user-name {
@@ -72,7 +76,14 @@
     display: block;
   }
 
-  .UserProfilePage img {
-    height: 100px;
+  .UserProfilePage .user-img-and-email {
+    justify-content: flex-start;
+    margin-top: 1.5em;
+  }
+
+  .UserProfilePage .user-circle {
+    height: 3rem;
+    width: 3rem;
+    margin: 0 1.5em;
   }
 }
