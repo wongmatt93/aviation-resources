@@ -19,7 +19,7 @@ const ConversationRepliesCard = ({ reply }: Props) => {
     <li className="ConversationRepliesCard">
       <div className="reply-header">
         <div>
-          <p>Created At</p>
+          <p className="created-at">Created At</p>
           <p>{dateString}</p>
         </div>
         <p>{reply.app_user.name ? reply.app_user.name : "Unknown app user"}</p>

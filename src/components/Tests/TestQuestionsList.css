@@ -5,6 +5,9 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .test-modal {
@@ -19,7 +22,7 @@
   width: 100%;
 }
 
-.x {
+.test-modal .x {
   text-align: center;
   width: 1.7rem;
 }
@@ -29,11 +32,5 @@
     width: 80%;
     height: auto;
     max-height: 90%;
-  }
-
-  .test-modal-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }

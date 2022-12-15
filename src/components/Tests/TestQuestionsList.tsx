@@ -16,8 +16,14 @@ interface Props {
 const TestQuestionsList = ({ test, user }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const openModal = (): void => setIsOpen(true);
-  const closeModal = (): void => setIsOpen(false);
+  const openModal = (): void => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = (): void => {
+    setIsOpen(false);
+    document.body.style.overflow = "scroll";
+  };
 
   return (
     <div className="TestQuestionsList">

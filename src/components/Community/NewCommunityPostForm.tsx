@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { INSERT_COMMUNITY_POST } from "../../GraphQL/Mutations";
 import { GET_COMMUNITY_POSTS } from "../../GraphQL/Queries";
 import AuthContext from "../../Context/AuthContext";
+import "animate.css";
 
 Modal.setAppElement("#root");
 
@@ -19,8 +20,14 @@ const NewCommunityPostForm = () => {
     }
   );
 
-  const openModal = (): void => setIsOpen(true);
-  const closeModal = (): void => setIsOpen(false);
+  const openModal = (): void => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = (): void => {
+    setIsOpen(false);
+    document.body.style.overflow = "scroll";
+  };
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -40,7 +47,7 @@ const NewCommunityPostForm = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="new-post-modal"
+        className="new-post-modal animate__animated animate__fadeInUpBig animate__faster"
         overlayClassName="new-post-modal-overlay"
       >
         <div className="new-post-header">

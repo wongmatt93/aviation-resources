@@ -36,8 +36,14 @@ const NewLessonForm = ({ user }: Props) => {
     resACS.data && setAcs(resACS.data.airman_certification_standards);
   }, [resACS.data]);
 
-  const openModal = (): void => setIsOpen(true);
-  const closeModal = (): void => setIsOpen(false);
+  const openModal = (): void => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = (): void => {
+    setIsOpen(false);
+    document.body.style.overflow = "scroll";
+  };
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -87,7 +93,7 @@ const NewLessonForm = ({ user }: Props) => {
             ))}
           </ul>
           <div className="button-container">
-          <button className="create-lesson-button">Create Lesson</button>
+            <button className="create-lesson-button">Create Lesson</button>
           </div>
         </form>
       </Modal>

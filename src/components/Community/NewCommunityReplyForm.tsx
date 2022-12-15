@@ -24,8 +24,14 @@ const NewCommunityReplyForm = ({ conversation, user }: Props) => {
     }
   );
 
-  const openModal = (): void => setIsOpen(true);
-  const closeModal = (): void => setIsOpen(false);
+  const openModal = (): void => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = (): void => {
+    setIsOpen(false);
+    document.body.style.overflow = "scroll";
+  };
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -49,17 +55,17 @@ const NewCommunityReplyForm = ({ conversation, user }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="new-post-modal"
-        overlayClassName="new-post-modal-overlay"
+        className="new-reply-modal animate__animated animate__fadeInUpBig animate__faster"
+        overlayClassName="new-reply-modal-overlay"
       >
-        <div className="new-post-header">
+        <div className="new-reply-header">
           <h2>Reply</h2>
           <button onClick={closeModal}>close</button>
         </div>
         <form onSubmit={handleSubmit}>
           <textarea
-            name="post"
-            id="post"
+            name="reply"
+            id="reply"
             placeholder="Write New Reply..."
             value={replyContent}
             onChange={(e) => setReplyContent(e.target.value)}

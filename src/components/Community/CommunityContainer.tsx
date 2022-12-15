@@ -26,13 +26,19 @@ const CommunityContainer = ({ user }: Props) => {
 
   return (
     <ul className="CommunityContainer">
-      {communityConversations.map((conversation) => (
-        <CommunityConversationCard
-          key={conversation.id}
-          conversation={conversation}
-          user={user}
-        />
-      ))}
+      {communityConversations
+        .slice()
+        .sort(
+          (a, b) =>
+            new Date(b.created_at).valueOf() - new Date(a.created_at).valueOf()
+        )
+        .map((conversation) => (
+          <CommunityConversationCard
+            key={conversation.id}
+            conversation={conversation}
+            user={user}
+          />
+        ))}
     </ul>
   );
 };

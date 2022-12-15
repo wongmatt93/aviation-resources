@@ -1,7 +1,5 @@
 .ResourcesPage input {
-  margin-top: 0.5em;
   width: 100%;
-  border-top: 1px solid #343e49;
-  border-bottom: 1px solid #343e49;
   padding: 0.5em;
+  box-sizing: border-box;
 }

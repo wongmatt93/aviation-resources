@@ -1,15 +1,16 @@
 .TestsContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  align-items: center;
+  padding: 0.5em;
+  box-sizing: border-box;
 }
 
 @media only screen and (min-width: 768px) {
   .TestsContainer {
-    flex-wrap: wrap;
     flex-direction: row;
-    padding: 1rem;
-    margin: 1rem;
-    box-sizing: border-box;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
 }

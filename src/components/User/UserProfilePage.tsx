@@ -18,18 +18,24 @@ const UserProfilePage = () => {
     <main className="UserProfilePage">
       {user && (
         <div className="user-profile">
-          <h2 className="title">Profile</h2>
-          <div className="user-img-and-email">
-            <Image src={profilePicture} />
-            <h3 className="email">E-mail: {user.email}</h3>
+          <div>
+            <h2 className="title">Profile</h2>
+            <div className="user-img-and-email">
+              <Image src={profilePicture} />
+              <h3 className="email">E-mail: {user.email}</h3>
+            </div>
+            <p className="user-name"> {user.name ? user.name : "name"} </p>
+            <div className="purpose-section">
+              <p className="section-label">Purpose:</p>
+              <p className="purpose-choices">
+                {user.purpose ? user.purpose : "Tap to Select"}
+              </p>
+            </div>
+            <div className="license-section">
+              <p className="section-label">Highest License:</p>
+              <p>{user.highest_acs ? user.highest_acs : "Tap to Select"}</p>
+            </div>
           </div>
-          <p className="user-name"> {user.name ? user.name : "name"} </p>
-          <p>Purpose:</p>
-          <p className="purpose-choices">
-            {user.purpose ? user.purpose : "Tap to Select"}
-          </p>
-          <p className="license">Highest License:</p>
-          <p>{user.highest_acs ? user.highest_acs : "Tap to Select"}</p>
           <div className="logout-delete-buttons">
             <button onClick={handleClick}>Log Out</button>
             <button>Delete Account</button>
