@@ -28,6 +28,14 @@
   padding-bottom: 0.5em;
 }
 
+.replies-modal .close-button:hover {
+  cursor: pointer;
+}
+
+.replies-modal .close-button:active {
+  opacity: 0.5;
+}
+
 .replies-modal .conversation-block {
   text-align: center;
   border-bottom: 1px solid gray;
@@ -59,16 +67,27 @@
 
 @media only screen and (min-width: 768px) {
   .replies-modal-overlay {
-    align-items: center;
+    justify-content: flex-end;
   }
 
   .replies-modal {
-    width: 70%;
-    height: auto;
-    max-height: 60%;
+    width: 50%;
+    height: 100%;
     padding: 2em;
     overflow: auto;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
+  }
+
+  .replies-modal .conversation-block {
+    padding: 1.5em 0;
+  }
+
+  .replies-modal .section-title {
+    margin-bottom: 1em;
+  }
+
+  .replies-modal .replies-block {
+    padding: 1.5em 0;
   }
 }

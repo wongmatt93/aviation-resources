@@ -1,8 +1,9 @@
 import "./ConversationRepliesContainer.css";
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import ConversationRepliesCard from "./ConversationRepliesCard";
 import { CommunityConversationReplies } from "../../Models/CommunityConversation";
+import {AiOutlineClose} from "react-icons/ai"
 
 Modal.setAppElement("#root");
 
@@ -13,6 +14,16 @@ interface Props {
 
 const ConversationRepliesContainer = ({ conversation, replies }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
 
   const openModal = (): void => {
     setIsOpen(true);
@@ -30,12 +41,14 @@ const ConversationRepliesContainer = ({ conversation, replies }: Props) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="replies-modal animate__animated animate__fadeInUpBig animate__faster"
+        className={`replies-modal animate__animated ${
+          windowWidth < 768 ? "animate__fadeInUpBig" : "animate__fadeInRightBig"
+        } animate__faster`}
         overlayClassName="replies-modal-overlay"
       >
         <div className="replies-header">
           <h2>Replies</h2>
-          <button onClick={closeModal}>close</button>
+          <AiOutlineClose className="close-button" onClick={closeModal}/>
         </div>
         <div className="conversation-block">
           <p className="section-title">Conversation</p>
