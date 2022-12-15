@@ -6,6 +6,9 @@ import profilePicture from "../../assets/profile-img.png";
 import { useContext, useEffect } from "react";
 import AuthContext from "../../Context/AuthContext";
 import DropdownNavigation from "./DropdownNavigation";
+import NavigationBar from "./NavigationBar";
+import ModalNavigation from "./ModalNavigation";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const { signedIn } = useContext(AuthContext);
@@ -25,41 +28,16 @@ const Header = () => {
     <header className="Header">
       <Image src={Logo} alt="logo" className="logo" />
       <h1 className="title-text">Aviation Resources</h1>
-      <nav className="desktop-nav">
-        <ul>
-          <Link to="/resources">
-            <li className="nav-button" id="resources">
-              Resources
-            </li>
-          </Link>
-          <Link to="/lessons">
-            <li className="nav-button" id="lessons">
-              Lessons
-            </li>
-          </Link>
-          <Link to="/tests">
-            <li className="nav-button" id="tests">
-              Tests
-            </li>
-          </Link>
-          <Link to="/community">
-            <li className="nav-button" id="community">
-              Community
-            </li>
-          </Link>
-        </ul>
-      </nav>
+      <NavigationBar />
+      <ModalNavigation />
       <div className="nav-and-page-info">
-        <DropdownNavigation />
         <h2>{location.pathname.toUpperCase().slice(1).replace(/-/g, " ")}</h2>
       </div>
 
       {/* change what button shows up depending on whether user is signed in */}
       {
-        <Image
-          className="user-picture"
-          alt="user profile"
-          src={profilePicture}
+        <FaUserCircle
+          className="user-icon"
           onClick={
             signedIn ? () => navigate("/user-profile") : () => navigate("/")
           }

@@ -5,6 +5,8 @@ import { GET_LESSONS } from "../../GraphQL/Queries";
 import AppUser from "../../Models/AppUser";
 import { Lesson } from "../../Models/Lesson";
 import "./LessonCard.css";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 interface Props {
   lesson: Lesson;
@@ -57,10 +59,8 @@ const LessonCard = ({ lesson, user }: Props) => {
           <p className="bottom-text-date">{createdDate}</p>
         </div>
       </div>
-      <button className="delete-button" onClick={handleClick}>
-        Delete
-      </button>
-      <button className="download-button">Download</button>
+      <RiDeleteBinLine className="delete-button" onClick={handleClick} />
+      <IoDocumentTextOutline className="download-button" />
     </li>
   );
 };

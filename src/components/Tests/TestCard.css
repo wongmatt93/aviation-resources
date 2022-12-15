@@ -1,24 +1,26 @@
 .TestCard {
   border: 1px solid rgba(145, 140, 140, 0.695);
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.7);
   margin: 0.5rem 0;
   text-align: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.TestCard:hover {
+  cursor: pointer;
+}
+
+.TestCard:active {
+  opacity: 0.5;
 }
 
 .TestCard .info-container {
   text-align: left;
-}
-
-.TestCard .button-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .TestCard h3 {
@@ -29,9 +31,16 @@
   margin: 0.5rem;
 }
 
+.TestCard .delete-button {
+  width: 1.2em;
+  height: 1.2em;
+  color: red;
+}
+
 @media only screen and (min-width: 768px) {
   .TestCard {
     width: 30%;
+    padding: 1rem;
     margin: 1rem 0;
   }
 }

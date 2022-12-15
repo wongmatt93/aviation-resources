@@ -6,6 +6,7 @@ import AppUser from "../../Models/AppUser";
 import { Test } from "../../Models/Test";
 import "./TestCard.css";
 import TestQuestionsList from "./TestQuestionsList";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 interface Props {
   test: Test;
@@ -15,6 +16,17 @@ interface Props {
 const TestCard = ({ test, user }: Props) => {
   const [percentCompleted, setPercentCompleted] = useState(0);
   const [percentCorrect, setPercentCorrect] = useState(0);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = (): void => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = (e: React.MouseEvent<HTMLElement>): void => {
+    e.stopPropagation();
+    setIsOpen(false);
+    document.body.style.overflow = "scroll";
+  };
 
   // graphQL mutation to delete tests
   const [deleteTest] = useMutation(DELETE_TEST, {
@@ -39,21 +51,25 @@ const TestCard = ({ test, user }: Props) => {
     );
   }, [test]);
 
-  const handleClick = (): void => {
+  const handleClick = (e: React.MouseEvent<HTMLOrSVGElement>): void => {
+    e.stopPropagation();
     deleteTest({ variables: { id: test.id } });
   };
 
   return (
-    <li className="TestCard">
+    <li className="TestCard" onClick={openModal}>
       <div className="info-container">
         <h3>{test.airman_certification_standard.abbreviation}</h3>
         <p>Percent Completed: {Math.trunc(percentCompleted)}%</p>
         <p>Percent Correct: {Math.trunc(percentCorrect)}%</p>
       </div>
-      <div className="button-container">
-        <TestQuestionsList test={test} user={user} />
-        <button onClick={handleClick}>Delete</button>
-      </div>
+      <TestQuestionsList
+        test={test}
+        user={user}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+      />
+      <RiDeleteBinLine onClick={handleClick} className="delete-button" />
     </li>
   );
 };

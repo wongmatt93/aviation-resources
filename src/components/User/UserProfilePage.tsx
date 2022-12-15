@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Image } from "semantic-ui-react";
 import AuthContext from "../../Context/AuthContext";
 import "./UserProfilePage.css";
-import profilePicture from "../../assets/profile-img.png";
+import { FaUserCircle } from  "react-icons/fa"
 
 const UserProfilePage = () => {
   const { user, signOut } = useContext(AuthContext);
@@ -21,7 +21,7 @@ const UserProfilePage = () => {
           <div>
             <h2 className="title">Profile</h2>
             <div className="user-img-and-email">
-              <Image src={profilePicture} />
+              <FaUserCircle className="user-circle" />
               <h3 className="email">E-mail: {user.email}</h3>
             </div>
             <p className="user-name"> {user.name ? user.name : "name"} </p>

@@ -18,10 +18,15 @@ export const GET_RESOURCES = gql`
   query {
     resources {
       id
+      created_at
       documentName
       documentNumber
-      urlString
+      indexed_into_elasticsearch
+      s3_key
       thumbNailURL
+      thumbnail_s3_key
+      updated_at
+      urlString
     }
   }
 `;

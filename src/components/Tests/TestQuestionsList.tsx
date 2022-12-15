@@ -5,29 +5,25 @@ import TestQuestionCard from "./TestQuestionCard";
 import { Test } from "../../Models/Test";
 import AppUser from "../../Models/AppUser";
 import "animate.css";
+import { AiOutlineClose } from "react-icons/ai";
 
 Modal.setAppElement("#root");
 
 interface Props {
   test: Test;
   user: AppUser | null;
+  closeModal: (e: React.MouseEvent<HTMLElement>) => void;
+  modalIsOpen: boolean;
 }
 
-const TestQuestionsList = ({ test, user }: Props) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const openModal = (): void => {
-    setIsOpen(true);
-    document.body.style.overflow = "hidden";
-  };
-  const closeModal = (): void => {
-    setIsOpen(false);
-    document.body.style.overflow = "scroll";
-  };
-
+const TestQuestionsList = ({
+  test,
+  user,
+  closeModal,
+  modalIsOpen,
+}: Props) => {
   return (
     <div className="TestQuestionsList">
-      <button onClick={openModal}>Open Test</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -36,19 +32,13 @@ const TestQuestionsList = ({ test, user }: Props) => {
         overlayClassName="test-modal-overlay"
       >
         <button className="x" onClick={closeModal}>
-          x
+          <AiOutlineClose />
         </button>
 
         <ul>
           {test.test_questions
             .slice()
-            .sort((a, b) =>
-              (
-                a.question.reference + a.question.airman_categories
-              ).localeCompare(
-                b.question.reference + b.question.airman_categories
-              )
-            )
+            .sort((a, b) => a.id.localeCompare(b.id))
             .map((question) => (
               <TestQuestionCard
                 key={question.id}

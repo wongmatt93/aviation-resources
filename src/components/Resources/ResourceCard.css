@@ -1,18 +1,66 @@
+.ResourceCard {
+  width: 45%;
+  position: relative;
+  margin-bottom: 1em;
+  background-color: white;
+}
+
+.ResourceCard .download-button {
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 0.5em;
+  right: 0.5em;
+  color: rgba(20, 92, 163, 0.8);
+  background-color: white;
+  border: 1px solid rgba(20, 92, 163, 0.8);
+  padding: 0.5em;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.ResourceCard .download-button:hover {
+  cursor: pointer;
+}
+
+.ResourceCard .download-button:active {
+  opacity: 0.5;
+}
+
+.ResourceCard img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .ResourceCard h2 {
-  display: flex;
   background-color: #c0ccda;
   font-size: small;
   font-weight: 300;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  box-sizing: border-box;
 }
 
-.ResourceCard {
-  border: 1px solid #c0ccda;
-  padding-top: 0.5em;
-}
+@media only screen and (min-width: 768px) {
+  .ResourceCard {
+    width: 30%;
+    margin-bottom: 2em;
+  }
 
-img {
-  height: 100px;
+  .ResourceCard .download-button {
+    top: 1rem;
+    right: 1rem;
+    width: 3em;
+    height: 3em;
+  }
+
+  .ResourceCard h2 {
+    font-size: larger;
+    padding: 2em;
+  }
 }
