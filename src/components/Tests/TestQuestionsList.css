@@ -22,15 +22,18 @@
   width: 100%;
 }
 
-.test-modal .x {
-  text-align: center;
-  width: 1.7rem;
+.test-modal .close-modal-button {
+  height: 2em;
+  width: 2em;
 }
 
 @media only screen and (min-width: 768px) {
+  .test-modal-overlay {
+    justify-content: flex-end;
+  }
+
   .test-modal {
-    width: 80%;
-    height: auto;
-    max-height: 90%;
+    width: 45%;
+    height: 100%;
   }
 }
