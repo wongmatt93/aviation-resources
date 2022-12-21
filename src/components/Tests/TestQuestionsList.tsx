@@ -1,5 +1,5 @@
 import "./TestQuestionsList.css";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import Modal from "react-modal";
 import TestQuestionCard from "./TestQuestionCard";
 import { Test } from "../../Models/Test";
@@ -12,29 +12,34 @@ Modal.setAppElement("#root");
 interface Props {
   test: Test;
   user: AppUser | null;
-  closeModal: (e: React.MouseEvent<HTMLElement>) => void;
+  closeModal: (e: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGElement>) => void;
   modalIsOpen: boolean;
 }
 
-const TestQuestionsList = ({
-  test,
-  user,
-  closeModal,
-  modalIsOpen,
-}: Props) => {
+const TestQuestionsList = ({ test, user, closeModal, modalIsOpen }: Props) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
   return (
     <div className="TestQuestionsList">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="test-modal animate__animated animate__fadeInUpBig animate__faster"
+        className={`test-modal animate__animated ${
+          windowWidth < 768 ? "animate__fadeInUpBig" : "animate__fadeInRightBig"
+        } animate__faster`}
         overlayClassName="test-modal-overlay"
       >
-        <button className="x" onClick={closeModal}>
-          <AiOutlineClose />
-        </button>
-
+        <AiOutlineClose className="close-modal-button" onClick={closeModal} />
         <ul>
           {test.test_questions
             .slice()

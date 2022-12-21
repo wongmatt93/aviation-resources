@@ -22,7 +22,7 @@ const TestCard = ({ test, user }: Props) => {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
   };
-  const closeModal = (e: React.MouseEvent<HTMLElement>): void => {
+  const closeModal = (e: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGElement>): void => {
     e.stopPropagation();
     setIsOpen(false);
     document.body.style.overflow = "scroll";
