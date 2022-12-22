@@ -1,11 +1,9 @@
 import "./Header.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Image } from "semantic-ui-react";
 import Logo from "../../assets/Logo.svg";
-import profilePicture from "../../assets/profile-img.png";
 import { useContext, useEffect } from "react";
 import AuthContext from "../../Context/AuthContext";
-import DropdownNavigation from "./DropdownNavigation";
 import NavigationBar from "./NavigationBar";
 import ModalNavigation from "./ModalNavigation";
 import { FaUserCircle } from "react-icons/fa";

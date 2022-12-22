@@ -1,17 +1,20 @@
 import { createContext } from "react";
 import AppUser from "../Models/AppUser";
+import { LoadedResource } from "../Models/Resource";
 
 export interface AuthContextModel {
   user: AppUser | null;
   signedIn: boolean;
-  signIn: () => void;
+  loadedResources: LoadedResource[];
+  signIn: (Username: string, Password: string) => Promise<unknown>;
   signOut: () => void;
 }
 
 const defaultValue: AuthContextModel = {
   user: null,
   signedIn: false,
-  signIn: () => {},
+  loadedResources: [],
+  signIn: async () => {},
   signOut: () => {},
 };
 

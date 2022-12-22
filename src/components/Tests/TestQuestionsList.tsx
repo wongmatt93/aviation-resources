@@ -12,7 +12,9 @@ Modal.setAppElement("#root");
 interface Props {
   test: Test;
   user: AppUser | null;
-  closeModal: (e: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGElement>) => void;
+  closeModal: (
+    e: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGElement>
+  ) => void;
   modalIsOpen: boolean;
 }
 
@@ -39,7 +41,9 @@ const TestQuestionsList = ({ test, user, closeModal, modalIsOpen }: Props) => {
         } animate__faster`}
         overlayClassName="test-modal-overlay"
       >
-        <AiOutlineClose className="close-modal-button" onClick={closeModal} />
+        <button onClick={closeModal} className="close-modal-button">
+          <AiOutlineClose />
+        </button>
         <ul>
           {test.test_questions
             .slice()

@@ -1,18 +1,49 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Image } from "semantic-ui-react";
 import AuthContext from "../../Context/AuthContext";
 import "./UserProfilePage.css";
-import { FaUserCircle } from  "react-icons/fa"
+import { FaUserCircle } from "react-icons/fa";
+import Pool from "../../UserPool";
+import { CognitoUserSession } from "amazon-cognito-identity-js";
+import { useMutation } from "@apollo/client";
+import { DELETE_APP_USER } from "../../GraphQL/Mutations";
 
 const UserProfilePage = () => {
   const { user, signOut } = useContext(AuthContext);
+  const [deleteUser] = useMutation(DELETE_APP_USER);
   const navigate = useNavigate();
 
-  const handleClick = (): void => {
-    signOut();
-    navigate("/");
+  const deleteAccount = async (email: string): Promise<unknown> => {
+    return await new Promise((resolve, reject) => {
+      const user = Pool.getCurrentUser();
+      if (user) {
+        user.getSession((err: any, session: CognitoUserSession) => {
+          if (err) {
+            reject();
+          } else {
+            user.deleteUser((err, result) => {
+              if (err) {
+                console.log(err);
+              } else {
+                signOut();
+                deleteUser({ variables: { email } });
+                console.log(result);
+              }
+            });
+            resolve(session);
+          }
+        });
+      } else {
+        reject();
+      }
+    });
   };
+
+  useEffect(() => {
+    if (user?.email === "guest@aviationresources.io") {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <main className="UserProfilePage">
@@ -37,8 +68,10 @@ const UserProfilePage = () => {
             </div>
           </div>
           <div className="logout-delete-buttons">
-            <button onClick={handleClick}>Log Out</button>
-            <button>Delete Account</button>
+            <button onClick={signOut}>Log Out</button>
+            <button onClick={() => deleteAccount(user.email)}>
+              Delete Account
+            </button>
           </div>
         </div>
       )}

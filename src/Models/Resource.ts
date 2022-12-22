@@ -9,3 +9,11 @@ export default interface Resource {
   updated_at: string;
   urlString: string;
 }
+
+export interface LoadedResource {
+  id: string;
+  thumbnailURL: string;
+  pdfURL: string;
+  documentName: string;
+  updated_at: string;
+}

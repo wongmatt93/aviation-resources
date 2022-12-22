@@ -3,9 +3,7 @@ import AuthContext from "../../Context/AuthContext";
 import NewTestForm from "./NewTestForm";
 import { useQuery } from "@apollo/client";
 import { GET_TESTS } from "../../GraphQL/Queries";
-
 import TestsContainer from "./TestsContainer";
-import { useNavigate } from "react-router-dom";
 import { Test } from "../../Models/Test";
 import "./TestsPage.css";
 
@@ -15,15 +13,10 @@ const TestsPage = () => {
     variables: { id: user && user.id },
   });
   const [tests, setTests] = useState<Test[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     data && setTests(data.test);
   }, [data]);
-
-  useEffect(() => {
-    !signedIn && navigate("/");
-  }, [signedIn, navigate]);
 
   if (error) return <p>Error! ${error.message}</p>;
 

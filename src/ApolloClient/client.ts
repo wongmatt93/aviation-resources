@@ -5,8 +5,6 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { onError } from "@apollo/client/link/error";
-import { RestLink } from "apollo-link-rest";
 
 const uri: string = process.env.REACT_APP_API_URI || "";
 const key: string = process.env.REACT_APP_API_KEY || "";
