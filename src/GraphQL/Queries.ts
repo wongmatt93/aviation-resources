@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_APP_USERS = gql`
-  query AuthContext($id: uuid!) {
-    app_user(where: { id: { _eq: $id } }) {
+  query AuthContext($email: String!) {
+    app_user(where: { email: { _eq: $email } }) {
       id
       created_at
       email

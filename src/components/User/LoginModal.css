@@ -1,6 +1,38 @@
-.login-option {
-  width: 7rem;
-  height: 2rem;
-  border-radius: 2rem;
-  border: rgba(84, 98, 113, 0.8) 1px solid;
+.login-modal-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.login-modal {
+  display: flex;
+  flex-direction: column;
+  color: #f0f0f0;
+  background-color: #181818;
+  height: 95%;
+  width: 100%;
+  padding: 2em 1.5em;
+  box-sizing: border-box;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+}
+
+@media only screen and (min-width: 768px) {
+  .login-modal-overlay {
+    align-items: center;
+  }
+
+  .login-modal {
+    height: auto;
+    width: 40%;
+    border-radius: 0.5em;
+    padding: 2em 4em;
+  }
 }

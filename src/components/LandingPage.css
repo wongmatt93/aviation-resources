@@ -1,9 +1,7 @@
 .LandingPage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 3rem;
 }
 
 .LandingPage h2 {
@@ -16,7 +14,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background: rgba(20, 92, 163, 0.5);
   width: 75%;
   height: 50%;
   border-radius: 1em;
@@ -39,4 +36,128 @@
 .LandingPage .pipe {
   color: white;
   margin: 0 0.7em;
+}
+
+.confirm-code-modal-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.confirm-code-modal {
+  display: flex;
+  flex-direction: column;
+  color: #f0f0f0;
+  background-color: #181818;
+  height: 95%;
+  width: 100%;
+  padding: 2em 1.5em;
+  box-sizing: border-box;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+}
+
+.confirm-code-modal .form-block {
+  height: 100%;
+}
+
+.confirm-code-modal h2 {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.confirm-code-modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-bottom: 2em;
+}
+
+.confirm-code-modal .contents {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.confirm-code-modal label {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  margin-bottom: 0.5em;
+}
+
+.confirm-code-modal svg {
+  margin-right: 0.5em;
+}
+
+.confirm-code-modal input {
+  padding: 1em;
+  box-sizing: border-box;
+  border: none;
+  background-color: #181818;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 1.5em;
+  color: #f0f0f0;
+}
+
+.confirm-code-modal .confirm-code-button {
+  width: 50%;
+  margin: 0 auto;
+  height: 2.5em;
+  background-color: rgba(20, 92, 163, 0.8);
+  color: white;
+  border-style: none;
+  border-radius: 0.7em;
+  font-size: medium;
+}
+
+.confirm-code-modal .confirm-code-button:hover {
+  cursor: pointer;
+}
+
+.confirm-code-modal .confirm-code-button:active {
+  opacity: 0.5;
+}
+
+.confirm-code-modal .close-button {
+  border: none;
+  margin: 0 auto;
+  background-color: transparent;
+  color: #f0f0f0;
+  font-size: medium;
+  text-decoration: underline;
+  width: 20%;
+}
+
+.confirm-code-modal .close-button:hover {
+  cursor: pointer;
+}
+
+.confirm-code-modal .close-button:active {
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 768px) {
+  .LandingPage {
+    justify-content: center;
+    padding: 3rem;
+  }
+  .confirm-code-modal-overlay {
+    align-items: center;
+  }
+
+  .confirm-code-modal {
+    height: auto;
+    width: 40%;
+    border-radius: 0.5em;
+    padding: 2em 4em;
+  }
 }

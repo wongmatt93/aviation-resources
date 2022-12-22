@@ -1,5 +1,15 @@
 import { gql } from "@apollo/client";
 
+export const DELETE_APP_USER = gql`
+  mutation DeleteUser($email: String!) {
+    delete_app_user(where: { email: { _eq: $email } }) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
 export const INSERT_LESSON = gql`
   mutation NewLessonForm(
     $id: uuid!

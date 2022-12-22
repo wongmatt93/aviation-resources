@@ -54,7 +54,11 @@ const CommunityConversationCard = ({ conversation, user }: Props) => {
             <p>{updatedDate}</p>
           </div>
         </div>
-        <p className="app-user">{conversation.app_user.name}</p>
+        <p className="app-user">
+          {conversation.app_user
+            ? conversation.app_user.name
+            : "Unknown App User"}
+        </p>
       </div>
       <h3 className="conversation-text">{conversation.conversation_text}</h3>
       <div className="reply-info">

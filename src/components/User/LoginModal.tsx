@@ -1,21 +1,15 @@
 import "./LoginModal.css";
 import Modal from "react-modal";
-import { FormEvent, useContext, useState } from "react";
-import AuthContext from "../../Context/AuthContext";
+import { useState } from "react";
+import LoginForm from "./LoginForm";
 
 Modal.setAppElement("#root");
 
 const LoginModal = () => {
-  const { signIn } = useContext(AuthContext);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = (): void => setIsOpen(true);
   const closeModal = (): void => setIsOpen(false);
-
-  const handleSubmit = (e: FormEvent): void => {
-    e.preventDefault();
-    signIn();
-  };
 
   return (
     <div className="LoginModal">
@@ -26,18 +20,10 @@ const LoginModal = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
+        className="login-modal animate__animated animate__fadeInUpBig animate__faster"
+        overlayClassName="login-modal-overlay"
       >
-        <div>
-          <h2>Log In</h2>
-          <button onClick={closeModal}>close</button>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" id="username" />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" />
-          <button>Log in</button>
-        </form>
+        <LoginForm closeModal={closeModal} />
       </Modal>
     </div>
   );

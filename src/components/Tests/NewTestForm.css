@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -82,7 +82,7 @@
   width: 50%;
   margin: 0 auto;
   height: 2.5em;
-  background-color: skyblue;
+  background-color: rgba(20, 92, 163, 0.8);
   color: white;
   border-style: none;
   border-radius: 0.7em;

@@ -8,6 +8,7 @@ import AppUser from "../../Models/AppUser";
 import AcsOutlineItem from "./AcsOutlineItem";
 import { INSERT_LESSON } from "../../GraphQL/Mutations";
 import NewTask from "../../Models/NewTask";
+import { AiOutlineClose } from "react-icons/ai";
 
 Modal.setAppElement("#root");
 
@@ -65,7 +66,7 @@ const NewLessonForm = ({ user }: Props) => {
         overlayClassName="new-lesson-modal-overlay "
       >
         <button className="close-button" onClick={closeModal}>
-          x
+          <AiOutlineClose />
         </button>
         <h2 className="new-lesson">New Lesson</h2>
         <form onSubmit={handleSubmit}>
