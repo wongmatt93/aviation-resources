@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client";
 
+export const UPDATE_APP_USER_INFO = gql`
+mutation UpdateAppUserName($_set: app_user_set_input!, $where: app_user_bool_exp!) {
+  update_app_user(_set: $_set, where: $where) {
+    affected_rows
+  }
+}
+`;
+
 export const DELETE_APP_USER = gql`
   mutation DeleteUser($email: String!) {
     delete_app_user(where: { email: { _eq: $email } }) {
