@@ -2,6 +2,7 @@ import "./LoginModal.css";
 import Modal from "react-modal";
 import { useState } from "react";
 import LoginForm from "./LoginForm";
+import { AiOutlineUser } from "react-icons/ai";
 
 Modal.setAppElement("#root");
 
@@ -14,7 +15,10 @@ const LoginModal = () => {
   return (
     <div className="LoginModal">
       <button className="login-option" onClick={openModal}>
-        Log In
+        <div>
+          <AiOutlineUser />
+        </div>
+        Login
       </button>
       <Modal
         isOpen={modalIsOpen}
