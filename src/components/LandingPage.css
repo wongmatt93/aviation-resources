@@ -5,8 +5,10 @@
 }
 
 .LandingPage h2 {
-  text-decoration: underline;
-  font-size: xx-large;
+  font-size: medium;
+  font-weight: 100;
+  position: absolute;
+  top: 150px;
 }
 
 .LandingPage .user-options {
@@ -22,20 +24,25 @@
 
 .LandingPage .guest-option {
   width: 7rem;
-  height: 2rem;
-  border-radius: 2rem;
-  border: rgba(84, 98, 113, 0.8) 1px solid;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: rgba(28, 28, 28, 0.942);
+  color: white;
+  font-weight: 100;
+  box-shadow: rgb(23, 34, 47) 0px 20px 30px -10px;
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.LandingPage a {
-  text-decoration: none;
-  color: white;
-  font-size: medium;
-}
-
-.LandingPage .pipe {
-  color: white;
-  margin: 0 0.7em;
+.forgot-password-and-confirm-code-buttons {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 50px;
 }
 
 .confirm-code-modal-overlay {
@@ -62,6 +69,12 @@
   box-sizing: border-box;
   border-top-right-radius: 0.5em;
   border-top-left-radius: 0.5em;
+}
+
+.confirm-code-option {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
 }
 
 .confirm-code-modal .form-block {

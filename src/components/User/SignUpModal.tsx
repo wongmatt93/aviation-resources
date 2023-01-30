@@ -4,6 +4,7 @@ import { useState } from "react";
 import ConfirmCode from "./ConfirmCode";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import { AiOutlineUserAdd } from "react-icons/ai";
 
 Modal.setAppElement("#root");
 
@@ -22,6 +23,9 @@ const SignUpModal = () => {
   return (
     <div className="SignUpModal">
       <button className="signup-options" onClick={openModal}>
+        <div>
+          <AiOutlineUserAdd />
+        </div>
         Sign Up
       </button>
       <Modal

@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 0.5em;
+  margin: 0.5em 0;
 }
 
 .UserProfilePage .user-circle {
@@ -32,12 +32,26 @@
 
 .UserProfilePage .user-name {
   padding: 1em 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   border-bottom: 1px black solid;
+  width: 100%;
 }
 
 .UserProfilePage .purpose-section {
   padding: 1em 0;
   border-bottom: 1px black solid;
+}
+
+.UserProfilePage select {
+  border: none;
+  appearance: none;
+  width: 100%;
+}
+
+.UserProfilePage select:hover {
+  cursor: pointer;
 }
 
 .UserProfilePage .section-label {
@@ -50,8 +64,31 @@
 }
 
 .UserProfilePage .logout-delete-buttons {
-  display: flex;
-  justify-content: space-evenly;
+  width: 100%;
+  text-align: center;
+}
+
+.UserProfilePage .log-out-button,
+.UserProfilePage .delete-account-button {
+  border: none;
+  margin: 0 auto;
+  background-color: transparent;
+  font-size: medium;
+  text-decoration: underline;
+}
+
+.UserProfilePage .delete-account-button {
+  color: red;
+}
+
+.UserProfilePage .log-out-button:hover,
+.UserProfilePage .delete-account-button:hover {
+  cursor: pointer;
+}
+
+.UserProfilePage .log-out-button:active,
+.UserProfilePage .delete-account-button:active {
+  opacity: 0.5;
 }
 
 @media only screen and (min-width: 768px) {

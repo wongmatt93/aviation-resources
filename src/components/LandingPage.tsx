@@ -2,11 +2,13 @@ import "./LandingPage.css";
 import { useNavigate, Link } from "react-router-dom";
 import LoginModal from "./User/LoginModal";
 import SignUpModal from "./User/SignUpModal";
+import ForgotPasswordModal from "./User/ForgotPasswordModal";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import ConfirmCode from "./User/ConfirmCode";
 import Modal from "react-modal";
 import LoginForm from "./User/LoginForm";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 Modal.setAppElement("#root");
 
@@ -30,18 +32,19 @@ const LandingPage = () => {
 
   return (
     <main className="LandingPage">
-      <h2>Aviation Resources</h2>
-      <p>Please Select an option to continue.</p>
+      <h2>Please Select an option to continue.</h2>
       <div className="user-options">
         <LoginModal />
         <SignUpModal />
         {/* redirects to Resources page like the mobile app */}
         <button onClick={() => navigate("/resources")} className="guest-option">
+          <div>
+            <AiOutlineQuestionCircle />
+          </div>
           Guest
         </button>
-        <div>
-          <Link to="/">Forgot Password</Link>
-          <span className="pipe">|</span>
+        <div className="forgot-password-and-confirm-code-buttons">
+          <ForgotPasswordModal />
           <button className="confirm-code-option" onClick={openModal}>
             Confirm Code
           </button>

@@ -82,10 +82,10 @@ const UserProfilePage = () => {
   useEffect(() => {
     if (user) {
       user.name ? setName(user.name) : setName("name");
-      user.purpose ? setPurpose(user.purpose) : setName("Tap to Select");
+      user.purpose ? setPurpose(user.purpose) : setPurpose("Tap to Select");
       user.highest_acs
         ? setHighestAcs(user.highest_acs)
-        : setName("Tap to Select");
+        : setHighestAcs("Tap to Select");
       if (user.email === "guest@aviationresources.io") {
         navigate("/");
       }
@@ -129,7 +129,12 @@ const UserProfilePage = () => {
             </div>
             <div className="license-section">
               <p className="section-label">Highest License:</p>
-              <select name="highestAcs" id="highestAcs" value={highestAcs} onChange={e=> handleUpdateHighestAcs(e.target.value)}>
+              <select
+                name="highestAcs"
+                id="highestAcs"
+                value={highestAcs}
+                onChange={(e) => handleUpdateHighestAcs(e.target.value)}
+              >
                 <option value="ATP">
                   Airline Transport Pilot and Type Rating for Airplane
                 </option>
@@ -144,8 +149,13 @@ const UserProfilePage = () => {
             </div>
           </div>
           <div className="logout-delete-buttons">
-            <button onClick={signOut}>Log Out</button>
-            <button onClick={() => deleteAccount(user.email)}>
+            <button onClick={signOut} className="log-out-button">
+              Log Out
+            </button>
+            <button
+              onClick={() => deleteAccount(user.email)}
+              className="delete-account-button"
+            >
               Delete Account
             </button>
           </div>

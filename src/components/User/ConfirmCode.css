@@ -54,11 +54,15 @@
   border-style: none;
   border-radius: 0.7em;
   font-size: medium;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
 }
 
 .ConfirmCode .confirm-code-button:hover {
   cursor: pointer;
 }
+
 
 .ConfirmCode .confirm-code-button:active {
   opacity: 0.5;
@@ -71,7 +75,7 @@
   color: #f0f0f0;
   font-size: medium;
   text-decoration: underline;
-  width: 20%;
+  width: 100%;
 }
 
 .ConfirmCode .close-button:hover {
